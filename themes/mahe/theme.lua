@@ -9,13 +9,13 @@ local wa = mouse.screen.workarea
 -- Color scheme
 -----------------------------------------------------------------------------------------------------------------------
 theme.color = {
-	main      = "#6BBA23",
+	main      = "#7ACC29",
 	gray      = "#6B6B6B",
 	bg        = "#161616",
 	bg_second = "#181818",
 	wibox     = "#202020",
-	icon      = "#DEDEDE",
-	text      = "#E6E6E6",
+	icon      = "#EEEEEE",
+	text      = "#EEEEEE",
 	urgent    = "#FF6A00",
 	highlight = "#ffffff",
 
