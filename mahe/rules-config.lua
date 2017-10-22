@@ -96,6 +96,10 @@ function rules:init(args)
       		properties = { screen = 1, tag = "Free" }
 		},
 		{
+			rule = { class = "albert" },
+      		properties = { border_width = 0 }
+		},
+		{
 			-- hacky hack for LO Impress presentations
 			-- the Impress are split in presentator view and presentation slides
 			-- the latter is identified by its WM_NAME being "LibreOffice 5.2"
