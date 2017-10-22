@@ -309,3 +309,7 @@ end
 
 -- restore wallpaper
 awful.spawn.with_shell("nitrogen --restore")
+
+-- we disable aero snap for now
+-- TODO, see https://awesomewm.org/doc/api/libraries/mouse.html#Theme_variables
+awful.mouse.snap.edge_enabled = false
