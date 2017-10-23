@@ -306,8 +306,30 @@ if timestamp.is_startup() then
 	autostart.run()
 end
 
--- restore wallpaper
-awful.spawn.with_shell("nitrogen --restore")
+-- redraw the wallpaper(s) on the root window according to the current layout
+local function draw_wallpaper()
+	awful.spawn.with_shell("nitrogen --restore")
+end
+
+draw_wallpaper()
+
+-- MULTISCREEN FIX
+-- whenever the screens change, redraw the wallpaper(s)
+screen.connect_signal("property::geometry",
+	function(s)
+		draw_wallpaper()
+	end
+)
+
+-- MULTISCREEN FIX
+--- update the screen order if primary screen changes
+screen.connect_signal("primary_changed",
+	function(s)
+		if s == screen.primary and s.index ~= 1 then
+			s:swap(screen[1])
+		end
+	end
+)
 
 -- we disable aero snap for now
 -- TODO, see https://awesomewm.org/doc/api/libraries/mouse.html#Theme_variables
