@@ -204,8 +204,10 @@ awful.screen.connect_for_each_screen(
 					separator,
 				},
 				{ -- middle widget
-					layout = wibox.layout.flex.horizontal,
-					wibox.container.place(env.wrapper(tasklist[s], "tasklist")),
+					layout = wibox.layout.align.horizontal,
+					expand = "outside",
+					nil,
+					env.wrapper(tasklist[s], "tasklist"),
 				},
 				{ -- right widgets
 					layout = wibox.layout.fixed.horizontal,
