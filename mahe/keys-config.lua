@@ -326,35 +326,35 @@ function hotkeys:init(args)
 	-- shared layout keys
 	local layout_tile = {
 		{
-			{ env.mod }, "l", function () awful.tag.incmwfact( 0.05) end,
+			{}, "d", function () awful.tag.incmwfact( 0.05) end,
 			{ description = "Increase master width factor", group = "Layout" }
 		},
 		{
-			{ env.mod }, "j", function () awful.tag.incmwfact(-0.05) end,
+			{}, "a", function () awful.tag.incmwfact(-0.05) end,
 			{ description = "Decrease master width factor", group = "Layout" }
 		},
 		{
-			{ env.mod }, "i", function () awful.client.incwfact( 0.05) end,
+			{}, "w", function () awful.client.incwfact( 0.05) end,
 			{ description = "Increase window factor of a client", group = "Layout" }
 		},
 		{
-			{ env.mod }, "k", function () awful.client.incwfact(-0.05) end,
+			{}, "s", function () awful.client.incwfact(-0.05) end,
 			{ description = "Decrease window factor of a client", group = "Layout" }
 		},
 		{
-			{ env.mod, }, "+", function () awful.tag.incnmaster( 1, nil, true) end,
+			{}, "+", function () awful.tag.incnmaster( 1, nil, true) end,
 			{ description = "Increase the number of master clients", group = "Layout" }
 		},
 		{
-			{ env.mod }, "-", function () awful.tag.incnmaster(-1, nil, true) end,
+			{}, "-", function () awful.tag.incnmaster(-1, nil, true) end,
 			{ description = "Decrease the number of master clients", group = "Layout" }
 		},
 		{
-			{ env.mod, "Control" }, "+", function () awful.tag.incncol( 1, nil, true) end,
+			{ env.mod }, "+", function () awful.tag.incncol( 1, nil, true) end,
 			{ description = "Increase the number of columns", group = "Layout" }
 		},
 		{
-			{ env.mod, "Control" }, "-", function () awful.tag.incncol(-1, nil, true) end,
+			{ env.mod }, "-", function () awful.tag.incncol(-1, nil, true) end,
 			{ description = "Decrease the number of columns", group = "Layout" }
 		},
 	}
@@ -364,102 +364,102 @@ function hotkeys:init(args)
 	-- grid layout keys
 	local layout_grid_move = {
 		{
-			{ "Mod4" }, "KP_Up", function() grid.move_to("up") end,
+			{}, "w", function() grid.move_to("up") end,
 			{ description = "Move window up", group = "Movement" }
 		},
 		{
-			{ "Mod4" }, "KP_Down", function() grid.move_to("down") end,
+			{}, "s", function() grid.move_to("down") end,
 			{ description = "Move window down", group = "Movement" }
 		},
 		{
-			{ "Mod4" }, "KP_Left", function() grid.move_to("left") end,
+			{}, "a", function() grid.move_to("left") end,
 			{ description = "Move window left", group = "Movement" }
 		},
 		{
-			{ "Mod4" }, "KP_right", function() grid.move_to("right") end,
+			{}, "d", function() grid.move_to("right") end,
 			{ description = "Move window right", group = "Movement" }
 		},
 		{
-			{ "Mod4", "Control" }, "KP_Up", function() grid.move_to("up", true) end,
+			{ "Control" }, "w", function() grid.move_to("up", true) end,
 			{ description = "Move window up by bound", group = "Movement" }
 		},
 		{
-			{ "Mod4", "Control" }, "KP_Down", function() grid.move_to("down", true) end,
+			{ "Control" }, "s", function() grid.move_to("down", true) end,
 			{ description = "Move window down by bound", group = "Movement" }
 		},
 		{
-			{ "Mod4", "Control" }, "KP_Left", function() grid.move_to("left", true) end,
+			{ "Control" }, "a", function() grid.move_to("left", true) end,
 			{ description = "Move window left by bound", group = "Movement" }
 		},
 		{
-			{ "Mod4", "Control" }, "KP_Right", function() grid.move_to("right", true) end,
+			{ "Control" }, "d", function() grid.move_to("right", true) end,
 			{ description = "Move window right by bound", group = "Movement" }
 		},
 	}
 
 	local layout_grid_resize = {
 		{
-			{ "Mod4" }, "i", function() grid.resize_to("up") end,
+			{ env.mod }, "w", function() grid.resize_to("up") end,
 			{ description = "Inrease window size to the up", group = "Resize" }
 		},
 		{
-			{ "Mod4" }, "k", function() grid.resize_to("down") end,
+			{ env.mod }, "s", function() grid.resize_to("down") end,
 			{ description = "Inrease window size to the down", group = "Resize" }
 		},
 		{
-			{ "Mod4" }, "j", function() grid.resize_to("left") end,
+			{ env.mod }, "a", function() grid.resize_to("left") end,
 			{ description = "Inrease window size to the left", group = "Resize" }
 		},
 		{
-			{ "Mod4" }, "l", function() grid.resize_to("right") end,
+			{ env.mod }, "d", function() grid.resize_to("right") end,
 			{ description = "Inrease window size to the right", group = "Resize" }
 		},
 		{
-			{ "Mod4", "Shift" }, "i", function() grid.resize_to("up", nil, true) end,
+			{ env.mod, "Shift" }, "w", function() grid.resize_to("up", nil, true) end,
 			{ description = "Decrease window size from the up", group = "Resize" }
 		},
 		{
-			{ "Mod4", "Shift" }, "k", function() grid.resize_to("down", nil, true) end,
+			{ env.mod, "Shift" }, "s", function() grid.resize_to("down", nil, true) end,
 			{ description = "Decrease window size from the down", group = "Resize" }
 		},
 		{
-			{ "Mod4", "Shift" }, "j", function() grid.resize_to("left", nil, true) end,
+			{ env.mod, "Shift" }, "a", function() grid.resize_to("left", nil, true) end,
 			{ description = "Decrease window size from the left", group = "Resize" }
 		},
 		{
-			{ "Mod4", "Shift" }, "l", function() grid.resize_to("right", nil, true) end,
+			{ env.mod, "Shift" }, "d", function() grid.resize_to("right", nil, true) end,
 			{ description = "Decrease window size from the right", group = "Resize" }
 		},
 		{
-			{ "Mod4", "Control" }, "i", function() grid.resize_to("up", true) end,
+			{ env.mod, "Control" }, "w", function() grid.resize_to("up", true) end,
 			{ description = "Increase window size to the up by bound", group = "Resize" }
 		},
 		{
-			{ "Mod4", "Control" }, "k", function() grid.resize_to("down", true) end,
+			{ env.mod, "Control" }, "s", function() grid.resize_to("down", true) end,
 			{ description = "Increase window size to the down by bound", group = "Resize" }
 		},
 		{
-			{ "Mod4", "Control" }, "j", function() grid.resize_to("left", true) end,
+			{ env.mod, "Control" }, "a", function() grid.resize_to("left", true) end,
 			{ description = "Increase window size to the left by bound", group = "Resize" }
 		},
 		{
-			{ "Mod4", "Control" }, "l", function() grid.resize_to("right", true) end,
+			{ env.mod, "Control" }, "d", function() grid.resize_to("right", true) end,
 			{ description = "Increase window size to the right by bound", group = "Resize" }
 		},
 		{
-			{ "Mod4", "Control", "Shift" }, "i", function() grid.resize_to("up", true, true) end,
+			{ env.mod, "Control", "Shift" }, "w", function() grid.resize_to("up", true, true) end,
 			{ description = "Decrease window size from the up by bound ", group = "Resize" }
 		},
 		{
-			{ "Mod4", "Control", "Shift" }, "k", function() grid.resize_to("down", true, true) end,
+			{ env.mod, "Control", "Shift" }, "s", function() grid.resize_to("down", true, true) end,
 			{ description = "Decrease window size from the down by bound ", group = "Resize" }
 		},
 		{
-			{ "Mod4", "Control", "Shift" }, "j", function() grid.resize_to("left", true, true) end,
+			{ env.mod, "Control", "Shift" }, "a", function() grid.resize_to("left", true, true) end,
 			{ description = "Decrease window size from the left by bound ", group = "Resize" }
 		},
 		{
-			{ "Mod4", "Control", "Shift" }, "l", function() grid.resize_to("right", true, true) end,
+			{ env.mod, "Control", "Shift" }, "d", function() grid.resize_to("right", true, true) end,
 			{ description = "Decrease window size from the right by bound ", group = "Resize" }
 		},
 	}
@@ -601,19 +601,19 @@ function hotkeys:init(args)
 		},
 
 		{
-			{ env.mod }, "l", focus_switch_byd("right"),
+			{ env.mod }, "d", focus_switch_byd("right"),
 			{ description = "Go to right client", group = "Client focus" }
 		},
 		{
-			{ env.mod }, "j", focus_switch_byd("left"),
+			{ env.mod }, "a", focus_switch_byd("left"),
 			{ description = "Go to left client", group = "Client focus" }
 		},
 		{
-			{ env.mod }, "i", focus_switch_byd("up"),
+			{ env.mod }, "w", focus_switch_byd("up"),
 			{ description = "Go to upper client", group = "Client focus" }
 		},
 		{
-			{ env.mod }, "k", focus_switch_byd("down"),
+			{ env.mod }, "s", focus_switch_byd("down"),
 			{ description = "Go to lower client", group = "Client focus" }
 		},
 		{
@@ -636,7 +636,7 @@ function hotkeys:init(args)
 		},
 
 		{
-			{ env.mod }, "w", function() mainmenu:show() end,
+			{ env.mod }, "x", function() mainmenu:show() end,
 			{ description = "Show main menu", group = "Widgets" }
 		},
 		{
@@ -647,10 +647,10 @@ function hotkeys:init(args)
 			{ env.mod }, "p", function() redflat.float.prompt:run() end,
 			{ description = "Show the prompt box", group = "Widgets" }
 		},
-		{
-			{ env.mod }, "x", function() redflat.float.top:show("cpu") end,
-			{ description = "Show the top process list", group = "Widgets" }
-		},
+		-- {
+		-- 	{ env.mod }, "x", function() redflat.float.top:show("cpu") end,
+		-- 	{ description = "Show the top process list", group = "Widgets" }
+		-- },
 		{
 			{ env.mod, "Control" }, "i", function() redflat.widget.minitray:toggle() end,
 			{ description = "Show minitray", group = "Widgets" }
