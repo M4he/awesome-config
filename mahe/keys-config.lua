@@ -178,8 +178,12 @@ function hotkeys:init(args)
 	------------------------------------------------------------
 	appswitcher_keys = {
 		{
-			{ }, "Right", function() appswitcher:switch() end,
+			{}, "Right", function() appswitcher:switch() end,
 			{ description = "Select next app", group = "Navigation" }
+		},
+		{
+			{}, "Tab", function() appswitcher:switch() end,
+			{} -- hidden key
 		},
 		{
 			{}, "Left", function() appswitcher:switch({ reverse = true }) end,
@@ -187,11 +191,16 @@ function hotkeys:init(args)
 		},
 		{
 			{}, "XF86LaunchA", function() appswitcher:hide() end,
-			{ description = "Activate and exit", group = "Action" }
+			{} -- hidden key
 		},
 		{
 			{}, "Return", function() appswitcher:hide() end,
 			{ description = "Activate and exit", group = "Action" }
+		},
+		{
+			-- TODO: why does this not work?
+			{}, "space", function() appswitcher:hide() end,
+			{} -- hidden key
 		},
 		{
 			{}, "Escape", function() appswitcher:hide(true) end,
@@ -612,18 +621,18 @@ function hotkeys:init(args)
 			{ description = "Go to urgent client", group = "Client focus" }
 		},
 		{
-			{ env.mod, "Control" }, "Tab", focus_to_previous,
-			{ description = "Go to previos client", group = "Client focus" }
+			{ env.mod }, "dead_circumflex", focus_to_previous,
+			{ description = "Go to previous client", group = "Client focus" }
 		},
 		{
 			-- window cycle with autoraise
-			{ env.mod }, "Tab", function() awful.client.focus.byidx(1); if client.focus then client.focus:raise(); end; end,
-			{ description = "Go to previos client", group = "Client focus" }
+			{ env.mod }, "Tab", function() awful.client.focus.byidx(-1); if client.focus then client.focus:raise(); end; end,
+			{ description = "Go to previous client", group = "Client focus" }
 		},
 		{
 			-- reverse window cycle with autoraise
-			{ env.mod, "Shift" }, "Tab", function() awful.client.focus.byidx(-1); if client.focus then client.focus:raise(); end; end,
-			{ description = "Go to previos client", group = "Client focus" }
+			{ env.mod, "Shift" }, "Tab", function() awful.client.focus.byidx(1); if client.focus then client.focus:raise(); end; end,
+			{ description = "Go to next client", group = "Client focus" }
 		},
 
 		{
@@ -665,11 +674,11 @@ function hotkeys:init(args)
 		},
 
 		{
-			{}, "XF86LaunchA", nil, function() appswitcher:show({ filter = current }) end,
+			{}, "XF86LaunchA", nil, function() appswitcher:show({ filter = current, noaction = true }) end,
 			{ description = "Switch to next with current tag", group = "Application switcher" }
 		},
 		{
-			{ "Shift" }, "XF86LaunchA", nil, function() appswitcher:show({ filter = allscr }) end,
+			{ "Shift" }, "XF86LaunchA", nil, function() appswitcher:show({ filter = allscr, noaction = true }) end,
 			{ description = "Switch to next through all tags", group = "Application switcher" }
 		},
 		{
@@ -705,7 +714,7 @@ function hotkeys:init(args)
 			{ description = "Show/hide widget", group = "Audio player" }
 		},
 		{
-			{ env.mod }, "y", function() laybox:toggle_menu(mouse.screen.selected_tag) end,
+			{ env.mod }, "less", function() laybox:toggle_menu(mouse.screen.selected_tag) end,
 			{ description = "Show layout menu", group = "Layouts" }
 		},
 		{
@@ -740,6 +749,10 @@ function hotkeys:init(args)
 		{
 			{ env.mod }, "n", function(c) c.minimized = true end,
 			{ description = "Minimize", group = "Client keys" }
+		},
+		{
+			{ env.mod }, "y", function(c) c.minimized = true end,
+			{} -- hidden key
 		},
 		{
 			{ env.mod }, "m", function(c) c.maximized = not c.maximized; c:raise() end,
