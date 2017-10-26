@@ -178,7 +178,7 @@ awful.screen.connect_for_each_screen(
 		-- tags
 		if screen.primary.index == s.index then
 			-- PRIMARY SCREEN
-			awful.tag({ "Main", "Comm", "Code", "Term", "Free" }, s, { al[4], al[6], al[3], al[6], al[2] })
+			awful.tag({ "Main", "Com", "Tile", "Full", "Grid" }, s, { al[3], al[6], al[3], al[6], al[2] })
 
 			-- layoutbox widget
 			layoutbox[s] = redflat.widget.layoutbox({ screen = s })
@@ -229,7 +229,7 @@ awful.screen.connect_for_each_screen(
 		else
 			-- ANY NON-PRIMARY SCREEN
 
-			awful.tag({ "Main" }, s, { al[4] })
+			awful.tag({ "Main" }, s, { al[2] })
 
 			-- layoutbox widget
 			layoutbox[s] = redflat.widget.layoutbox({ screen = s })

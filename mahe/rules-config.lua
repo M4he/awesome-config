@@ -81,19 +81,24 @@ function rules:init(args)
 		{
 			-- set Firefox to always map on tags number 2 of screen 1.
 			rule = { class = "Firefox-esr" },
-      		properties = { screen = 1, tag = "Comm" }
+      		properties = { screen = 1, tag = "Com" }
 		},
 		{
 			rule = { class = "Pidgin" },
-      		properties = { screen = 1, tag = "Comm" }
+      		properties = { screen = 1, tag = "Com" }
 		},
 		{
 			rule = { class = "Thunderbird" },
-      		properties = { screen = 1, tag = "Comm" }
+      		properties = { screen = 1, tag = "Com" }
 		},
 		{
 			rule = { class = "Audacious" },
-      		properties = { screen = 1, tag = "Free" }
+      		properties = {
+      			floating = true,
+      			size_hints_honor = true,
+      			minimized = true,
+      			sticky = true
+      		}
 		},
 		{
 			rule = { class = "albert" },
