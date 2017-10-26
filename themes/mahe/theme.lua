@@ -40,8 +40,6 @@ theme.useless_gap         = 5  -- useless gap
 
 theme.cellnum = { x = 96, y = 58 } -- grid layout property
 
-theme.wallpaper = "~/.wallpaper" -- wallpaper file
-
 -- Fonts
 ------------------------------------------------------------
 theme.fonts = {
