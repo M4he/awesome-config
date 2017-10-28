@@ -76,33 +76,48 @@ function rules:init(args)
 		-- custom rules
 		{
 			rule = { class = "Gsimplecal" },
-      		properties = { placement = awful.placement.bottom_right }
+			properties = { placement = awful.placement.bottom_right }
 		},
 		{
 			-- set Firefox to always map on tags number 2 of screen 1.
 			rule = { class = "Firefox-esr" },
-      		properties = { screen = 1, tag = "Com" }
+			properties = { screen = 1, tag = screen.primary.tags[2] }
 		},
 		{
 			rule = { class = "Pidgin" },
-      		properties = { screen = 1, tag = "Com" }
+			properties = { screen = 1, tag = screen.primary.tags[2] }
 		},
 		{
 			rule = { class = "Thunderbird" },
-      		properties = { screen = 1, tag = "Com" }
+			properties = { screen = 1, tag = screen.primary.tags[2] }
 		},
 		{
 			rule = { class = "Audacious" },
-      		properties = {
-      			floating = true,
-      			size_hints_honor = true,
-      			minimized = true,
-      			sticky = true
-      		}
+			properties = {
+				-- floating = true,
+				size_hints_honor = true,
+				-- minimized = true,
+				-- sticky = true
+			}
+		},
+		{
+			rule = { class = "mpv" },
+			properties = {
+				size_hints_honor = true,
+			}
+		},
+		{
+			rule = { class = "TeamSpeak 3" },
+			properties = {
+				floating = true,
+				sticky = true,
+				ontop = true,
+				size_hints_honor = true,
+			}
 		},
 		{
 			rule = { class = "albert" },
-      		properties = { border_width = 0 }
+			properties = { border_width = 0 }
 		},
 		{
 			-- hacky hack for LO Impress presentations
