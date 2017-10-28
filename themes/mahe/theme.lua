@@ -50,13 +50,13 @@ theme.fonts = {
 	clock    = "Play bold 13",   -- textclock widget font
 	qlaunch  = "Play bold 14",   -- quick launch key label font
 	keychain = "Play bold 16",   -- key sequence tip font
-	mtitle   = "Roboto bold 14", -- menu titles font
-	title    = "Roboto bold 13", -- widget titles font
-	titlebar = "Roboto bold 11", -- client titlebar font
+	mtitle   = "Play bold 14", -- menu titles font
+	title    = "Play bold 13", -- widget titles font
+	titlebar = "Play bold 11", -- client titlebar font
 	hotkeys  = {
 		main  = "Roboto 14",             -- hotkeys helper main font
 		key   = "Roboto Mono Medium 14", -- hotkeys helper key font (use monospace for align)
-		title = "Roboto bold 16",        -- hotkeys helper group title font
+		title = "Play bold 16",        -- hotkeys helper group title font
 	},
 	player   = {
 		main = "Play bold 13", -- player widget main font
