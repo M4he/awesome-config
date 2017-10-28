@@ -23,6 +23,19 @@ local function title_buttons(c)
 				client.focus = c;  c:raise()
 				awful.mouse.client.move(c)
 			end
+		),
+		awful.button(
+			{ }, 2,
+			function()
+				c.minimized = true
+			end
+		),
+		awful.button(
+			{ }, 3,
+			function()
+				client.focus = c;  c:raise()
+				awful.mouse.client.resize(c)
+			end
 		)
 	)
 end
