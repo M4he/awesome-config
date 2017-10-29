@@ -276,7 +276,7 @@ edges:init()
 
 -- Key bindings
 -----------------------------------------------------------------------------------------------------------------------
-local hotkeys = require("mahe.keys-config-macbook") -- load file with hotkeys configuration
+local hotkeys = require("mahe.keys-config-laptop") -- load file with hotkeys configuration
 hotkeys:init({ env = env, menu = mymenu.mainmenu })
 
 
@@ -288,7 +288,7 @@ rules:init({ hotkeys = hotkeys})
 
 -- Titlebar setup
 -----------------------------------------------------------------------------------------------------------------------
-local titlebar = require("mahe.titlebar-config-macbook") -- load file with titlebar configuration
+local titlebar = require("mahe.titlebar-config-laptop") -- load file with titlebar configuration
 titlebar:init()
 
 
