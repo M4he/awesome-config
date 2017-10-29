@@ -678,6 +678,9 @@ theme.border_marked = theme.color.main
 -- font
 theme.font = theme.fonts.main
 
+-- prevent master from filling entire screen when slave stack is empty
+theme.master_fill_policy = "master_width_factor"
+
 -- End
 -----------------------------------------------------------------------------------------------------------------------
 return theme
