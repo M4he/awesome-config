@@ -631,7 +631,7 @@ theme.titlebar = {
 	size          = 8,
 	position      = "top",
 	font          = theme.fonts.titlebar,
-	icon          = { size = 30, gap = 10 },
+	icon          = { size = 30, gap = 5 },
 	border_margin = { 0, 0, 0, 4 },
 	color         = theme.color,
 }
