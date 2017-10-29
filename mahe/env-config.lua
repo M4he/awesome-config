@@ -39,6 +39,24 @@ function env:init(args)
 	-- theme setup
 	beautiful.init(env.themedir .. "/theme.lua")
 
+	-- rofi color adjustment
+	rofi_cmd = "rofi"
+	rofi_accent_color = beautiful.color.rofi_accent or beautiful.color.main
+	--
+	-- SYNTAX: -color-window background, border_color, separator_color
+	rofi_cmd = rofi_cmd .. " -color-window '" .. beautiful.color.wibox .. "," .. beautiful.color.gray .. "," .. rofi_accent_color .. "'"
+	--
+	-- SYNTAX: -color-normal background, foreground, background_alt, highlight_background, highlight_foreground
+	rofi_cmd = rofi_cmd .. " -color-normal '" .. beautiful.color.wibox .. "," .. beautiful.color.text .. "," .. beautiful.color.wibox .. "," .. beautiful.color.main .. "," .. beautiful.color.wibox .. "'"
+	--
+	-- SYNTAX: color-urgent background, foreground, background_alt, highlight_background, highlight_foreground
+	rofi_cmd = rofi_cmd .. " -color-urgent '" .. beautiful.color.wibox .. "," .. beautiful.color.urgent .. "," .. beautiful.color.wibox .. "," .. beautiful.color.urgent .. "," .. beautiful.color.wibox .. "'"
+	--
+	-- SYNTAX: color-active background, foreground, background_alt, highlight_background, highlight_foreground
+	rofi_cmd = rofi_cmd .. " -color-active '" .. beautiful.color.wibox .. "," .. rofi_accent_color .. "," .. beautiful.color.wibox .. "," .. rofi_accent_color .. "," .. beautiful.color.text .. "'"
+	rofi_cmd = rofi_cmd .. " -show"
+	self.rofi = rofi_cmd
+
 	-- naughty config
 	naughty.config.padding = beautiful.useless_gap and 2 * beautiful.useless_gap or 0
 
