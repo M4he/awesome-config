@@ -574,6 +574,10 @@ function hotkeys:init(args)
 	--------------------------------------------------------------------------------
 	self.raw.root = {
 		{
+			{ "Control" }, "space", function() awful.spawn(env.rofi) end,
+			{ description = "Show Application Launcher", group = "Main" }
+		},
+		{
 			{ env.mod }, "F1", function() redtip:show() end,
 			{ description = "Show hotkeys helper", group = "Main" }
 		},
