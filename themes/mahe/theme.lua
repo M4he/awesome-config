@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------------------------------------------------------
---                                                   Blue theme                                                      --
+--                                                 Mahe's theme                                                      --
 -----------------------------------------------------------------------------------------------------------------------
 local awful = require("awful")
 
@@ -26,9 +26,14 @@ theme.color = {
 	shadow4   = "#767676"
 }
 
+-- Color variations
+-- Import your color variations here!
+---------------------------------------------
+theme = require('themes.mahe.colors.sunshift')
+
 -- Common
 -----------------------------------------------------------------------------------------------------------------------
-theme.path = awful.util.get_configuration_dir() .. "themes/blue"
+theme.path = awful.util.get_configuration_dir() .. "themes/mahe"
 theme.homedir = os.getenv("HOME")
 
 -- Main config
