@@ -9,7 +9,7 @@ theme.color = {
     icon      = "#EEEEEE",
     text      = "#EEEEEE",
     urgent    = "#FF4070",
-    highlight = "#ffffff",
+    highlight = "#2D343F",
 
     border    = "#404040",
     shadow1   = "#1B1C1F",

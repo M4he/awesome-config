@@ -8,6 +8,7 @@ local wibox = require("wibox")
 
 -- local redflat = require("redflat")
 local redtitle = require("redflat.titlebar")
+local clientmenu = require("redflat.float.clientmenu")
 
 -- Initialize tables and vars for module
 -----------------------------------------------------------------------------------------------------------------------
@@ -34,7 +35,7 @@ local function title_buttons(c)
 			{ }, 3,
 			function()
 				client.focus = c;  c:raise()
-				awful.mouse.client.resize(c)
+				clientmenu:show(c)
 			end
 		)
 	)
@@ -62,6 +63,8 @@ function titlebar:init(args)
 
 	style.light = args.light or redtitle.get_style()
 	style.full = args.full or { size = 24, icon = { size = 22, gap = 0, angle = 0.5 } }
+
+	clientmenu:init()
 
 	client.connect_signal(
 		"request::titlebars",
