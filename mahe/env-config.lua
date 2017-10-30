@@ -39,8 +39,10 @@ function env:init(args)
 	-- theme setup
 	beautiful.init(env.themedir .. "/theme.lua")
 
+	-- rofi command building
+	--
+	rofi_cmd = "rofi -no-config" -- ignore config, we setup everything here
 	-- rofi color adjustment
-	rofi_cmd = "rofi"
 	rofi_accent_color = beautiful.color.rofi_accent or beautiful.color.main
 	--
 	-- SYNTAX: -color-window background, border_color, separator_color
@@ -54,7 +56,14 @@ function env:init(args)
 	--
 	-- SYNTAX: color-active background, foreground, background_alt, highlight_background, highlight_foreground
 	rofi_cmd = rofi_cmd .. " -color-active '" .. beautiful.color.wibox .. "," .. rofi_accent_color .. "," .. beautiful.color.wibox .. "," .. rofi_accent_color .. "," .. beautiful.color.text .. "'"
-	rofi_cmd = rofi_cmd .. " -show"
+	--
+	-- generic styling
+	rofi_cmd = rofi_cmd .. " -bw 2 -lines 10 -separator-style solid -padding 5 -scrollbar-width 5 -line-margin 5 -line-padding 2 -sidebar-mode true"
+	rofi_cmd = rofi_cmd .. " -font 'Roboto mono medium 13'"
+	-- rofi keybindings
+	rofi_cmd = rofi_cmd .. " -kb-mode-next Tab -kb-mode-previous Shift+Tab -kb-move-front Home -kb-move-end End"
+	rofi_cmd = rofi_cmd .. " -display-ssh SSH -display-drun APP -display-run RUN -display-window WIN"
+	rofi_cmd = rofi_cmd .. " -terminal " .. self.terminal .. " -modi 'drun,window,run,ssh' -show"
 	self.rofi = rofi_cmd
 
 	-- naughty config
