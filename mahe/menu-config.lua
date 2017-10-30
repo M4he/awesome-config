@@ -49,11 +49,11 @@ function menu:init(args)
 	-- Places submenu
 	------------------------------------------------------------
 	local placesmenu = {
-		{ "Documents",   env.fm .. " Documents" },
-		{ "Downloads",   env.fm .. " Downloads"  },
-		{ "Music",       env.fm .. " Music"     },
-		{ "Pictures",    env.fm .. " Pictures"  },
-		{ "Videos",      env.fm .. " Videos"    },
+		{ "Documents", "bash -c '" .. env.fm .. " `xdg-user-dir DOCUMENTS`'"},
+		{ "Downloads", "bash -c '" .. env.fm .. " `xdg-user-dir DOWNLOAD`'"},
+		{ "Music",     "bash -c '" .. env.fm .. " `xdg-user-dir MUSIC`'"},
+		{ "Pictures",  "bash -c '" .. env.fm .. " `xdg-user-dir PICTURES`'"},
+		{ "Videos",    "bash -c '" .. env.fm .. " `xdg-user-dir VIDEOS`'"},
 	}
 
 	-- Exit submenu
