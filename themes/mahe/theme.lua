@@ -136,7 +136,7 @@ theme.service.dfparser = {
 		'~/.local/share/applications',
 	},
 	icons = {
-		df_icon       = theme.path .. "/common/unknown.svg",
+		df_icon       = nil,
 		theme         = theme.homedir .. "/.icons/ACYLS",
 		custom_only   = true,
 		scalable_only = true
