@@ -23,7 +23,7 @@ function menu:init(args)
 	local env = args.env or {} -- fix this?
 	local separator = args.separator or { widget = redflat.gauge.separator.horizontal() }
 	local theme = args.theme or { auto_hotkey = true }
-	local icon_style = args.icon_style or { custom_only = true, scalable_only = true }
+	local icon_style = args.icon_style or {}
 
 	-- theme vars
 	local deficon = redflat.util.base.placeholder()
@@ -32,7 +32,7 @@ function menu:init(args)
 
 	-- icon finder
 	local function micon(name)
-		return redflat.service.dfparser.lookup_icon(name, icon_style)
+		return nil
 	end
 
 	-- Application submenu
@@ -42,48 +42,43 @@ function menu:init(args)
 	-- Awesome submenu
 	------------------------------------------------------------
 	local awesomemenu = {
-		{ "Restart",         awesome.restart,                 micon("gnome-session-reboot") },
-		separator,
-		{ "Awesome config",  env.fm .. " .config/awesome",        micon("folder-bookmarks") },
-		{ "Awesome lib",     env.fm .. " /usr/share/awesome/lib", micon("folder-bookmarks") }
+		{ "Restart",         awesome.restart },
+		{ "Exit",            awesome.quit },
 	}
 
 	-- Places submenu
 	------------------------------------------------------------
 	local placesmenu = {
-		{ "Documents",   env.fm .. " Documents", micon("folder-documents") },
-		{ "Downloads",   env.fm .. " Downloads", micon("folder-download")  },
-		{ "Music",       env.fm .. " Music",     micon("folder-music")     },
-		{ "Pictures",    env.fm .. " Pictures",  micon("folder-pictures")  },
-		{ "Videos",      env.fm .. " Videos",    micon("folder-videos")    },
-		separator,
-		{ "Media",       env.fm .. " /mnt/media", micon("folder-bookmarks") },
-		{ "Storage",     env.fm .. " /opt",       micon("folder-bookmarks") },
+		{ "Documents",   env.fm .. " Documents" },
+		{ "Downloads",   env.fm .. " Downloads"  },
+		{ "Music",       env.fm .. " Music"     },
+		{ "Pictures",    env.fm .. " Pictures"  },
+		{ "Videos",      env.fm .. " Videos"    },
 	}
 
 	-- Exit submenu
 	------------------------------------------------------------
 	local exitmenu = {
-		{ "Reboot",          "reboot",                    micon("gnome-session-reboot")  },
-		{ "Switch user",     "dm-tool switch-to-greeter", micon("gnome-session-switch")  },
-		{ "Suspend",         "systemctl suspend" ,        micon("gnome-session-suspend") },
-		{ "Log out",         awesome.quit,                micon("exit")                },
+		{ "Reboot",          "reboot"  },
+		{ "Switch user",     "dm-tool switch-to-greeter"  },
+		{ "Suspend",         "systemctl suspend"  },
+		{ "Log out",         awesome.quit                },
 	}
 
 	-- Main menu
 	------------------------------------------------------------
+	theme.width = 150 -- adjust width
 	self.mainmenu = redflat.menu({ theme = theme,
 		items = {
-			{ "Awesome",       awesomemenu, micon("awesome") },
-			{ "Applications",  appmenu,     micon("distributor-logo") },
-			{ "Places",        placesmenu,  micon("folder_home"), key = "c" },
+			{ "Applications",  appmenu },
+			{ "Places",        placesmenu, key = "c" },
 			separator,
-			{ "Tilix", "tilix", micon("tilix") },
-			{ "Thunar",    "thunar",    micon("folder") },
-			{ "Sublime",   "subl",   micon("sublime-text") },
-			-- separator,
-			-- { "Exit",     exitmenu,       micon("exit") },
-			-- { "Shutdown", "shutdown now", micon("system-shutdown") }
+			{ "Terminal", "tilix" },
+			{ "Sublime",   "subl" },
+			{ "Files",    "thunar" },
+			separator,
+			{ "Awesome",       awesomemenu },
+			{ "Disconnect",     "xfce4-session-logout" },
 		}
 	})
 
