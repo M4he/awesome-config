@@ -10,14 +10,14 @@ local wa = mouse.screen.workarea
 -----------------------------------------------------------------------------------------------------------------------
 theme.color = {
 	main      = "#7ACC29",
-	gray      = "#6B6B6B",
-	bg        = "#161616",
-	bg_second = "#181818",
-	wibox     = "#202020",
-	icon      = "#EEEEEE",
-	text      = "#EEEEEE",
-	urgent    = "#FF4070",
-	highlight = "#ffffff",
+	gray      = "#6B6B6B",  -- used for inactive elements and bar trunks
+	bg        = "#161616",  -- bg used for custom widgets (e.g. appswitcher, top)
+	bg_second = "#181818",  -- alternating lines for 'bg'
+	wibox     = "#202020",  -- border, panel and general background color
+	icon      = "#EEEEEE",  -- icons in menus
+	text      = "#EEEEEE",  -- text in menus and titlebars
+	urgent    = "#FF4070",  -- urgent window highlight in taglist, tasklist also volume mute
+	highlight = "#ffffff",  -- text when highlighted in menu
 
 	border    = "#404040",
 	shadow1   = "#141414",
