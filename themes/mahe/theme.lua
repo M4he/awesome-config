@@ -227,7 +227,7 @@ theme.gauge.tag.blue = {
 -- within 'taglist.style = {...}' of the main rc-*.lua file in
 -- order to switch to circled tag buttons of the redflat lib)
 theme.gauge.tag.orange = {
-	width        = 36,
+	width        = 40,
 	line_width   = theme.gauge.monitor.circle.line_width,
 	iradius      = theme.gauge.monitor.circle.iradius,
 	radius       = theme.gauge.monitor.circle.radius,
@@ -274,15 +274,13 @@ theme.widget = {}
 -- individual margins for palnel widgets
 ------------------------------------------------------------
 theme.widget.wrapper = {
-	layoutbox   = { 12, 10, 6, 6 },
-	textclock   = { 10, 10, 0, 0 },
-	volume      = { 10, 10, 5, 5 },
+	layoutbox   = { 10, 8, 6, 6 },
+	textclock   = { 8, 8, 0, 0 },
+	volume      = { 8, 8, 5, 5 },
 	network     = { 10, 10, 5, 5 },
 	cpuram      = { 10, 10, 5, 5 },
-	ram         = { 5, 5, 0, 0 },
-	cpu         = { 5, 5, 0, 0 },
-	keyboard    = { 10, 10, 4, 4 },
-	mail        = { 10, 10, 4, 4 },
+	ram         = { 8, 8, 0, 0 },
+	cpu         = { 8, 8, 0, 0 },
 	battery     = { 8, 10, 7, 7 },
 	tray        = { 8, 8, 7, 7 },
 	tasklist    = { 4, 0, 0, 0 }, -- centering tasklist widget
