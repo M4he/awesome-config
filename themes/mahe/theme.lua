@@ -281,7 +281,7 @@ theme.widget.wrapper = {
 	cpuram      = { 10, 10, 5, 5 },
 	ram         = { 8, 8, 0, 0 },
 	cpu         = { 8, 8, 0, 0 },
-	battery     = { 8, 10, 7, 7 },
+	battery     = { 5, 5, 7, 7 },
 	tray        = { 8, 8, 7, 7 },
 	tasklist    = { 4, 0, 0, 0 }, -- centering tasklist widget
 }
