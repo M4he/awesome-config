@@ -68,7 +68,7 @@ tasklist.buttons = awful.util.table.join(
 -- Taglist widget
 --------------------------------------------------------------------------------
 local taglist = {}
-taglist.style = { separator = separator, widget = redflat.gauge.tag.blue.new, show_tip = true }
+taglist.style = { separator = separator, widget = redflat.gauge.tag.orange.new, show_tip = true }
 taglist.buttons = awful.util.table.join(
 	awful.button({         }, 1, function(t) t:view_only() end),
 	awful.button({ env.mod }, 1, function(t) if client.focus then client.focus:move_to_tag(t) end end),
@@ -171,7 +171,7 @@ awful.screen.connect_for_each_screen(
 		-- tags
 		if screen.primary.index == s.index then
 			-- PRIMARY SCREEN
-			awful.tag({ "Main", "Com", "Tile", "Full", "Grid" }, s, { al[1], al[6], al[3], al[6], al[2] })
+			awful.tag({ "Main", "Com", "Code", "Tile", "Grid" }, s, { al[1], al[6], al[3], al[3], al[2] })
 
 			-- layoutbox widget
 			layoutbox[s] = redflat.widget.layoutbox({ screen = s })
