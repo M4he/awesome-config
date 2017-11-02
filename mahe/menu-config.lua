@@ -56,15 +56,6 @@ function menu:init(args)
 		{ "Videos",    "bash -c '" .. env.fm .. " `xdg-user-dir VIDEOS`'"},
 	}
 
-	-- Exit submenu
-	------------------------------------------------------------
-	local exitmenu = {
-		{ "Reboot",          "reboot"  },
-		{ "Switch user",     "dm-tool switch-to-greeter"  },
-		{ "Suspend",         "systemctl suspend"  },
-		{ "Log out",         awesome.quit                },
-	}
-
 	-- Main menu
 	------------------------------------------------------------
 	theme.width = 150 -- adjust width
@@ -78,7 +69,7 @@ function menu:init(args)
 			{ "Files",    "thunar" },
 			separator,
 			{ "Awesome",       awesomemenu },
-			{ "Disconnect",     "xfce4-session-logout" },
+			{ "Leave Session ...",     env.logout },
 		}
 	})
 
