@@ -20,8 +20,8 @@ theme.color = {
 	highlight = "#ffffff",  -- text when highlighted in menu
 
 	border    = "#404040",
-	shadow1   = "#141414",
-	shadow2   = "#3a3a3a",
+	shadow1   = "#141414", -- separator dark side
+	shadow2   = "#3a3a3a", -- separator bright side
 	shadow3   = "#1c1c1c",
 	shadow4   = "#767676"
 }
