@@ -233,6 +233,7 @@ function hotkeys:init(args)
 		{ {}, "g", {}, {} }, -- run or rise group
 		{ {}, "f", {}, {} }, -- launch application group
 		{ {}, "m", {}, {} }, -- monitor setting group
+		{ {}, "b", {}, {} }, -- monitor brightness group
 	}
 
 	-- quick launch key sequence actions
@@ -245,6 +246,23 @@ function hotkeys:init(args)
 		table.insert(keyseq[3][6][3], {
 			{}, ik, function() qlaunch:run_or_raise(ik, true) end,
 			{ description = "Launch application №".. ik, group = "Quick Launch", keyset = { ik } }
+		})
+	end
+
+	-- external monitor brightness
+	for i = 0, 9 do
+		local ik = tostring(i)
+		table.insert(keyseq[3][8][3], {
+			{}, ik, function()
+				local br = "1.0" 
+				if i == 0 then
+					br = "1.0"
+				else
+					br = "0." .. ik
+				end
+				awful.spawn("xrandr --output HDMI1 --brightness " .. br)
+			end,
+			{ description = "Set external monitor brightness level to " .. ik, group = "Monitor management", keyset = { ik } }
 		})
 	end
 
@@ -314,7 +332,7 @@ function hotkeys:init(args)
 		},
 		{
 			{}, "o", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/monitor.sh ontop") end,
-			{ description = "Set the external screen ontop", group = "Monitor managment", keyset = { "o" } }
+			{ description = "Set the external screen ontop", group = "Monitor management", keyset = { "o" } }
 		},
 		
 	}
@@ -334,11 +352,11 @@ function hotkeys:init(args)
 			{ description = "Decrease master width factor", group = "Layout" }
 		},
 		{
-			{}, "w", function () awful.client.incwfact( 0.05) end,
+			{}, "w", function () awful.client.incwfact( 0.075) end,
 			{ description = "Increase window factor of a client", group = "Layout" }
 		},
 		{
-			{}, "s", function () awful.client.incwfact(-0.05) end,
+			{}, "s", function () awful.client.incwfact(-0.075) end,
 			{ description = "Decrease window factor of a client", group = "Layout" }
 		},
 		{
@@ -574,6 +592,10 @@ function hotkeys:init(args)
 	--------------------------------------------------------------------------------
 	self.raw.root = {
 		{
+			{ "Mod4" }, "l", function() awful.spawn(env.screenlock) end,
+			{ description = "Lock screen", group = "Main" }
+		},
+		{
 			{ "Control" }, "space", function() awful.spawn(env.rofi) end,
 			{ description = "Show Application Launcher", group = "Main" }
 		},
@@ -728,6 +750,10 @@ function hotkeys:init(args)
 		{
 			{ env.mod, "Shift" }, "space", function() awful.layout.inc(-1) end,
 			{ description = "Select previous layout", group = "Layouts" }
+		},
+		{
+			{}, "XF86PowerOff", function() awful.spawn(env.logout) end,
+			{ description = "Show logout / power control prompt", group = "Main" }
 		},
 	}
 

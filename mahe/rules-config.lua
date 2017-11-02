@@ -116,8 +116,15 @@ function rules:init(args)
 			}
 		},
 		{
-			rule = { class = "albert" },
-			properties = { border_width = 0 }
+			rule = { class = "Oblogout" },
+			properties = {
+				floating = true,
+				sticky = true,
+				ontop = true,
+				maximized = true,
+				border_width = 0,
+				titlebars_enabled = false
+			}
 		},
 		{
 			-- hacky hack for LO Impress presentations

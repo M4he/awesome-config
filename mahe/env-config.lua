@@ -22,8 +22,12 @@ function env:init(args)
 	local args = args or {}
 	local theme = args.theme or "red"
 
+	local oblogout = "oblogout -c " .. awful.util.get_configuration_dir() .. "mahe/oblogout.conf"
+
 	-- environment vars
 	self.terminal = args.terminal or "tilix"
+	self.screenlock = args.screenlock or "sunlock"
+	self.logout = args.logout or oblogout
 	self.mod = args.mod or "Mod1"
 	self.fm = args.fm or "thunar"
 	self.mail = args.mail or "thunderbird"
@@ -78,19 +82,7 @@ end
 
 
 -- Common functions
------------------------------------------------------------------------------------------------------------------------
-
--- Wallpaper setup
---------------------------------------------------------------------------------
-env.wallpaper = function(s)
-	if beautiful.wallpaper then
-		if awful.util.file_readable(beautiful.wallpaper) then
-			gears.wallpaper.maximized(beautiful.wallpaper, s, true)
-		else
-			gears.wallpaper.set(beautiful.color.bg)
-		end
-	end
-end
+----------------------------------------------------------------------------------------------------------------------
 
 -- Tag tooltip text generation
 --------------------------------------------------------------------------------

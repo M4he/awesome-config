@@ -5,7 +5,7 @@
 appnames = {}
 
 appnames["Firefox-esr"] = "FIFOX"
-appnames["Audacious"] = "MUSIC"
+appnames["Audacious"] = "AUDCS"
 appnames["Sublime_text"] = "SUBL"
 appnames["Gnome-system-monitor"] = "SYSMN"
 appnames["Gimp-2.8"] = "GIMP"
@@ -25,6 +25,8 @@ appnames["libreoffice-writer"] = "WRITR"
 appnames["libreoffice-impress"] = "IMPRS"
 appnames["libreoffice-calc"] = "CALC"
 appnames["File-roller"] = "ARCHV"
+appnames["Pavucontrol"] = "PAVOL"
+appnames["Oblogout"] = "EXIT"
 
 return appnames
 
