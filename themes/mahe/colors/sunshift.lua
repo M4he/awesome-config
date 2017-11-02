@@ -2,9 +2,9 @@ local theme = {}
 
 theme.color = {
     main      = "#FFD026",
-    gray      = "#73807F",
-    bg        = "#25292E",
-    bg_second = "#292D33",
+    gray      = "#677372",
+    bg        = "#212429",
+    bg_second = "#1F2226",
     wibox     = "#282E36",
     icon      = "#EEEEEE",
     text      = "#EEEEEE",
