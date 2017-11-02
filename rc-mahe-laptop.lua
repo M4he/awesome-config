@@ -178,7 +178,7 @@ awful.screen.connect_for_each_screen(
 		-- tags
 		if screen.primary.index == s.index then
 			-- PRIMARY SCREEN
-			awful.tag({ "Main", "Com", "Tile", "Full", "Grid" }, s, { al[3], al[6], al[3], al[6], al[2] })
+			awful.tag({ "Main", "Com", "Code", "Tile", "Free" }, s, { al[3], al[6], al[3], al[3], al[1] })
 
 			-- layoutbox widget
 			layoutbox[s] = redflat.widget.layoutbox({ screen = s })
@@ -229,7 +229,7 @@ awful.screen.connect_for_each_screen(
 		else
 			-- ANY NON-PRIMARY SCREEN
 
-			awful.tag({ "Main" }, s, { al[2] })
+			awful.tag({ "Main" }, s, { al[3] })
 
 			-- layoutbox widget
 			layoutbox[s] = redflat.widget.layoutbox({ screen = s })
@@ -300,7 +300,7 @@ signals:init({ env = env })
 
 -- Autostart user applications
 -----------------------------------------------------------------------------------------------------------------------
-local autostart = require("mahe.autostart-config") -- load file with autostart application list
+local autostart = require("mahe.autostart-config-laptop") -- load file with autostart application list
 
 if timestamp.is_startup() then
 	autostart.run()
@@ -322,7 +322,7 @@ screen.connect_signal("property::geometry",
 )
 
 -- MULTISCREEN FIX
---- update the screen order if primary screen changes
+-- update the screen order if primary screen changes
 screen.connect_signal("primary_changed",
 	function(s)
 		if s == screen.primary and s.index ~= 1 then

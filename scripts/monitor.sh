@@ -30,17 +30,13 @@ case "$1" in
         xrandr --output $EXT --primary --auto;
         ;;
     extend)
-        xrandr --output $EXT --off;
         xrandr --output eDP1 --primary --auto;
         xrandr --output $EXT --auto --right-of eDP1;
         ;;
     mirror)
-        xrandr --output eDP1 --off;
-        xrandr --output $EXT --off;
         xrandr --output $EXT --primary --auto --output eDP1 --auto --same-as $EXT
         ;;
     ontop)
-        xrandr --output eDP1 --off;
         xrandr --output $EXT --primary --auto;
         xrandr --output eDP1 --auto --below $EXT;
         ;;
