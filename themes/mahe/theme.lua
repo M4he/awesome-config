@@ -415,8 +415,7 @@ theme.widget.tasklist.winmenu = {
 	menu           = { width = 220, color = { right_icon = theme.color.icon }, ricon_margin = { 9, 9, 9, 9 } },
 	state_iconsize = { width = 18, height = 18 },
 	layout_icon    = theme.widget.layoutbox.icon,
-	color          = theme.color,
-	actionline     = { height = 28 }
+	color          = theme.color
 }
 
 -- tasktip
@@ -441,6 +440,19 @@ theme.widget.tasklist.winmenu.icon = {
 	close                = theme.path .. "/common/window_control/close.svg",
 	minimize             = theme.path .. "/common/window_control/minimize.svg",
 	maximized            = theme.path .. "/common/window_control/maximized.svg",
+}
+
+-- Clientmenu
+------------------------------------------------------------
+theme.widget.clientmenu = {
+	micon          = theme.icon,
+	color          = theme.color,
+	actionline     = { height = 28 },
+	layout_icon    = theme.widget.layoutbox.icon,
+	menu           = theme.widget.tasklist.winmenu.menu,
+	state_iconsize = theme.widget.tasklist.winmenu.state_iconsize,
+	tagmenu        = theme.widget.tasklist.winmenu.tagmenu,
+	icon           = theme.widget.tasklist.winmenu.icon,
 }
 
 
