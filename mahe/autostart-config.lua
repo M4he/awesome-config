@@ -13,10 +13,8 @@ local autostart = {}
 --------------------------------------------------------------------------------
 function autostart.run()
 	-- utils
-	awful.spawn.with_shell("dispwin -d1 ~/.config/color/CustomMacRumors.icc")
 	-- awful.spawn.with_shell("pulseaudio")
 	-- awful.spawn.with_shell("nm-applet")
-	awful.spawn.with_shell("gnome-screensaver-helper 2")
 	awful.spawn.with_shell("killall compton; compton")
 end
 

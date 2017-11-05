@@ -631,12 +631,12 @@ function hotkeys:init(args)
 		{
 			-- window cycle with autoraise
 			{ env.mod }, "Tab", function() awful.client.focus.byidx(-1); if client.focus then client.focus:raise(); end; end,
-			{ description = "Go to previous client", group = "Client focus" }
+			{ description = "Cycle through clients (reverse)", group = "Client focus" }
 		},
 		{
 			-- reverse window cycle with autoraise
 			{ env.mod, "Shift" }, "Tab", function() awful.client.focus.byidx(1); if client.focus then client.focus:raise(); end; end,
-			{ description = "Go to next client", group = "Client focus" }
+			{ description = "Cycle through clients (forward)", group = "Client focus" }
 		},
 
 		{
@@ -644,11 +644,7 @@ function hotkeys:init(args)
 			{ description = "Show main menu", group = "Widgets" }
 		},
 		{
-			{ env.mod }, "r", function() apprunner:show() end,
-			{ description = "Application launcher", group = "Widgets" }
-		},
-		{
-			{ env.mod }, "p", function() redflat.float.prompt:run() end,
+			{ env.mod }, "r", function() redflat.float.prompt:run() end,
 			{ description = "Show the prompt box", group = "Widgets" }
 		},
 		-- {
@@ -666,7 +662,7 @@ function hotkeys:init(args)
 
 		{
 			{ env.mod }, "Escape", awful.tag.history.restore,
-			{ description = "Go previos tag", group = "Tag navigation" }
+			{ description = "Go previous tag", group = "Tag navigation" }
 		},
 		{
 			{ env.mod, "Control" }, "Right", awful.tag.viewnext,
