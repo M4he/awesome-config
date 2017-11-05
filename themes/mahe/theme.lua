@@ -660,11 +660,11 @@ theme.naughty.base = {
 	fg           = theme.color.text,
 	height       = theme.float.notify.geometry.height,
 	width        = theme.float.notify.geometry.width,
-	border_width = 4,
-	border_color = theme.color.wibox
+	border_width = theme.border_width,
+	border_color = theme.color.main
 }
 
-theme.naughty.normal = {}
+theme.naughty.normal = theme.naughty.base
 theme.naughty.critical = { timeout = 0, border_color = theme.color.main }
 theme.naughty.low = { timeout = 5 }
 
