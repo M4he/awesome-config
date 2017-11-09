@@ -834,7 +834,12 @@ function hotkeys:init(args)
 		awful.button({}, 1, function (c) client.focus = c; c:raise() end),
 		awful.button({ env.mod }, 1, function (c) client.focus = c; c:raise() end),
 		awful.button({ env.mod}, 1, function (c) client.focus = c; c:raise(); awful.mouse.client.move(c) end),
-		awful.button({ env.mod }, 3, awful.mouse.client.resize)
+		awful.button({ env.mod }, 3, function (c)
+			-- only enable right-click resizing for floating clients and layouts
+			if c.floating or (c.screen.selected_tag.layout == redflat.layout.grid) or (c.screen.selected_tag.layout == awful.layout.suit.floating) then
+				awful.mouse.client.resize(c)
+			end
+		end)
 	)
 
 	-- Set root hotkeys
