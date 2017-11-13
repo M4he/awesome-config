@@ -10,6 +10,7 @@ theme.color = {
     text      = "#EEEEEE",
     urgent    = "#FF4070",
     highlight = "#262D36",
+    empty     = "#677372",
 
     border    = "#404040",
     shadow1   = "#1B1D1F",
