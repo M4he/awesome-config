@@ -9,7 +9,7 @@ local wa = mouse.screen.workarea
 -- Color scheme
 -----------------------------------------------------------------------------------------------------------------------
 theme.color = {
-	main      = "#7ACC29",
+	main      = "#7DBF39",
 	gray      = "#6B6B6B",  -- used for inactive elements and bar trunks
 	bg        = "#161616",  -- bg used for custom widgets (e.g. appswitcher, top)
 	bg_second = "#181818",  -- alternating lines for 'bg'
@@ -17,13 +17,16 @@ theme.color = {
 	icon      = "#EEEEEE",  -- icons in menus
 	text      = "#EEEEEE",  -- text in menus and titlebars
 	urgent    = "#FF4070",  -- urgent window highlight in taglist, tasklist also volume mute
-	highlight = "#ffffff",  -- text when highlighted in menu
+	highlight = "#EEEEEE",  -- text when highlighted in menu
+	empty     = "#6B6B6B",  -- circle tag empty color
 
-	border    = "#404040",
-	shadow1   = "#141414", -- separator dark side
-	shadow2   = "#3a3a3a", -- separator bright side
+	border    = "#202020",
+	shadow1   = "#000000", -- separator dark side
+	shadow2   = "#303030", -- separator bright side
 	shadow3   = "#1c1c1c",
-	shadow4   = "#767676"
+	shadow4   = "#767676",
+
+	rofi_accent = "#EEEEEE"
 }
 
 -- Color variations
