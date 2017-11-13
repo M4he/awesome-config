@@ -47,7 +47,7 @@ function env:init(args)
 	--
 	rofi_cmd = "rofi -no-config" -- ignore config, we setup everything here
 	-- rofi color adjustment
-	rofi_accent_color = beautiful.color.rofi_accent or beautiful.color.main
+	rofi_accent_color = beautiful.color.secondary or beautiful.color.main
 	--
 	-- SYNTAX: -color-window background, border_color, separator_color
 	rofi_cmd = rofi_cmd .. " -color-window '" .. beautiful.color.wibox .. "," .. beautiful.color.gray .. "," .. rofi_accent_color .. "'"

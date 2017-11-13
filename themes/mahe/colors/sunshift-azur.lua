@@ -2,7 +2,7 @@ local theme = {}
 
 theme.color = {
     main      = "#FFD026",
-    gray      = "#677372",
+    gray      = "#676E73",
     bg        = "#23252B",
     bg_second = "#25282E",
     wibox     = "#262D36",
@@ -16,8 +16,9 @@ theme.color = {
     shadow2   = "#363C47",
     shadow3   = "#14171C",
     shadow4   = "#546175",
+    empty     = "#676E73",
 
-    secondary = "#23BFCD"
+    secondary = "#42A5F5"
 }
 
 return theme

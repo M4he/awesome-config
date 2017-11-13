@@ -29,7 +29,7 @@ theme.color = {
 -- Color variations
 -- Import your color variations here!
 ---------------------------------------------
-theme = require('themes.mahe.colors.sunshift')
+theme = require('themes.mahe.colors.sunshift-azur')
 
 -- Common
 -----------------------------------------------------------------------------------------------------------------------
