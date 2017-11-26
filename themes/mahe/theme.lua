@@ -9,30 +9,30 @@ local wa = mouse.screen.workarea
 -- Color scheme
 -----------------------------------------------------------------------------------------------------------------------
 theme.color = {
-	main      = "#7DBF39",
+	main      = "#81CC33",
 	gray      = "#6B6B6B",  -- used for inactive elements and bar trunks
 	bg        = "#161616",  -- bg used for custom widgets (e.g. appswitcher, top)
 	bg_second = "#181818",  -- alternating lines for 'bg'
-	wibox     = "#202020",  -- border, panel and general background color
+	wibox     = "#262D36",  -- border, panel and general background color
 	icon      = "#EEEEEE",  -- icons in menus
 	text      = "#EEEEEE",  -- text in menus and titlebars
 	urgent    = "#FF4070",  -- urgent window highlight in taglist, tasklist also volume mute
-	highlight = "#EEEEEE",  -- text when highlighted in menu
+	highlight = "#262D36",  -- text when highlighted in menu
 	empty     = "#6B6B6B",  -- circle tag empty color
 
-	border    = "#202020",
-	shadow1   = "#000000", -- separator dark side
-	shadow2   = "#303030", -- separator bright side
-	shadow3   = "#1c1c1c",
-	shadow4   = "#767676",
+	border    = "#404040",  -- tooltip border
+	shadow1   = "#1B1D1F",  -- separator dark side
+	shadow2   = "#363C47",  -- separator bright side
+	shadow3   = "#808080",  -- buttons outer border
+	shadow4   = "#6B6B6B",  -- buttons inner border
 
-	rofi_accent = "#EEEEEE"
+	secondary = "#EEEEEE"
 }
 
 -- Color variations
 -- Import your color variations here!
 ---------------------------------------------
-theme = require('themes.mahe.colors.sunshift-azur')
+-- theme = require('themes.mahe.colors.sunshift-pure')
 
 -- Common
 -----------------------------------------------------------------------------------------------------------------------
