@@ -190,10 +190,6 @@ function hotkeys:init(args)
 			{ description = "Select previous app", group = "Navigation" }
 		},
 		{
-			{}, "F2", function() appswitcher:hide() end,
-			{} -- hidden key
-		},
-		{
 			{}, "Return", function() appswitcher:hide() end,
 			{ description = "Activate and exit", group = "Action" }
 		},
@@ -671,15 +667,6 @@ function hotkeys:init(args)
 		{
 			{ env.mod, "Control" }, "Left", awful.tag.viewprev,
 			{ description = "View previous tag", group = "Tag navigation" }
-		},
-
-		{
-			{}, "F2", nil, function() appswitcher:show({ filter = current, noaction = true }) end,
-			{ description = "Switch to next with current tag", group = "Application switcher" }
-		},
-		{
-			{ "Shift" }, "F2", nil, function() appswitcher:show({ filter = allscr, noaction = true }) end,
-			{ description = "Switch to next through all tags", group = "Application switcher" }
 		},
 		{
 			{ env.mod }, "t", function() redtitle.toggle(client.focus) end,

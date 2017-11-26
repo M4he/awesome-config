@@ -29,7 +29,7 @@ function env:init(args)
 	self.screenlock = args.screenlock or "sunlock"
 	self.logout = args.logout or oblogout
 	self.mod = args.mod or "Mod1"
-	self.fm = args.fm or "thunar"
+	self.fm = args.fm or "nautilus -w"
 	self.mail = args.mail or "thunderbird"
 	self.player = args.player or "audacious"
 	self.upgrades = args.upgrades or "echo 'FIXME'"
