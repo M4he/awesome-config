@@ -24,7 +24,7 @@ theme.color = {
 	shadow1   = "#16181A",  -- separator dark side
 	shadow2   = "#2E343D",  -- separator bright side
 	shadow3   = "#808080",  -- buttons outer border
-	shadow4   = "#6B6B6B",  -- buttons inner border
+	shadow4   = "#5C696B",  -- buttons inner border
 
 	secondary = "#EEEEEE"
 }

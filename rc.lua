@@ -3,7 +3,7 @@
 -- local rc = "rc-orange"
 -- local rc = "rc-green"
 -- local rc = "rc-colorless"
-local rc = "rc-mahe"
+local rc = "rc-mahe-laptop"
 require(rc)
 
 -- workaround for unmaximized clients missing their border

@@ -1,3 +1,4 @@
 [submodule "redflat"]
-	path = redflat
-	url = https://github.com/M4he/redflat.git
+    path = redflat
+    url = git@github.com:M4he/redflat.git
+

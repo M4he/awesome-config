@@ -13,14 +13,14 @@ local autostart = {}
 --------------------------------------------------------------------------------
 function autostart.run()
 	-- utils
-	awful.spawn.with_shell("xmodmap ~/.Xmodmap")
-	awful.spawn.with_shell("xrdb -merge ~/.Xdefaults")
-	awful.spawn.with_shell("dispwin -d1 ~/.config/color/CustomMacRumors.icc")
+	awful.spawn.with_shell("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
+	awful.spawn.with_shell("start-pulseaudio-x11")
 	awful.spawn.with_shell("nm-applet")
 	awful.spawn.with_shell("blueman-applet")
-	awful.spawn.with_shell("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
+	awful.spawn.with_shell("system-config-printer-applet")
 	-- screen locking
-	awful.spawn.with_shell("sunlocker") -- xss-lock spawner
+	awful.spawn.with_shell("mate-screensaver") -- main process
+	awful.spawn.with_shell("xss-service") -- xss-lock spawner
 	awful.spawn.with_shell("xset dpms 600 0 0") -- display standby
 	awful.spawn.with_shell("xset s 120 0") -- lock screen trigger
 	--

@@ -116,6 +116,15 @@ function rules:init(args)
 			}
 		},
 		{
+			rule = { class = "Covergloobus.py" },
+			properties = {
+				floating = true,
+				sticky = true,
+				size_hints_honor = true,
+				border_width = 0,
+			}
+		},
+		{
 			rule = { class = "Oblogout" },
 			properties = {
 				floating = true,

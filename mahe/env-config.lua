@@ -26,7 +26,7 @@ function env:init(args)
 
 	-- environment vars
 	self.terminal = args.terminal or "tilix"
-	self.screenlock = args.screenlock or "sunlock"
+	self.screenlock = args.screenlock or "mate-screensaver-command --lock"
 	self.logout = args.logout or oblogout
 	self.mod = args.mod or "Mod1"
 	self.fm = args.fm or "nautilus -w"

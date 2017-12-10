@@ -25,6 +25,7 @@ local grid = redflat.layout.grid
 local map = redflat.layout.map
 local redtitle = redflat.titlebar
 local qlaunch = redflat.float.qlaunch
+local clientmenu = redflat.float.clientmenu
 
 -- Key support functions
 -----------------------------------------------------------------------------------------------------------------------
@@ -260,7 +261,7 @@ function hotkeys:init(args)
 				else
 					br = "0." .. ik
 				end
-				awful.spawn("xrandr --output HDMI1 --brightness " .. br)
+				awful.spawn("xrandr --output HDMI1 --brightness " .. br .. " --gamma 0.9:0.9:0.9")
 			end,
 			{ description = "Set external monitor brightness level to " .. ik, group = "Monitor management", keyset = { ik } }
 		})
@@ -832,8 +833,8 @@ function hotkeys:init(args)
 	--------------------------------------------------------------------------------
 	self.mouse.client = awful.util.table.join(
 		awful.button({}, 1, function (c) client.focus = c; c:raise() end),
-		awful.button({ env.mod }, 1, function (c) client.focus = c; c:raise() end),
-		awful.button({ env.mod}, 1, function (c) client.focus = c; c:raise(); awful.mouse.client.move(c) end),
+		awful.button({ env.mod }, 1, function (c) client.focus = c; c:raise(); awful.mouse.client.move(c) end),
+		awful.button({ env.mod }, 2, function (c) clientmenu:show(c) end),
 		awful.button({ env.mod }, 3, function (c)
 			-- only enable right-click resizing for floating clients and layouts
 			if c.floating or (c.screen.selected_tag.layout == redflat.layout.grid) or (c.screen.selected_tag.layout == awful.layout.suit.floating) then
