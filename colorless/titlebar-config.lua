@@ -8,6 +8,7 @@ local wibox = require("wibox")
 
 -- local redflat = require("redflat")
 local redtitle = require("redflat.titlebar")
+local clientmenu = require("redflat.float.clientmenu")
 
 -- Initialize tables and vars for module
 -----------------------------------------------------------------------------------------------------------------------
@@ -23,6 +24,13 @@ local function title_buttons(c)
 				client.focus = c;  c:raise()
 				awful.mouse.client.move(c)
 			end
+		),
+		awful.button(
+			{ }, 3,
+			function()
+				client.focus = c;  c:raise()
+				clientmenu:show(c)
+			end
 		)
 	)
 end
@@ -37,6 +45,7 @@ local function on_maximize(c)
 	local model = redtitle.get_model(c)
 	if model and not model.hidden then
 		c.height = c:geometry().height + (is_max and model.size or -model.size)
+		if is_max then c.y = c.screen.workarea.y end
 	end
 end
 

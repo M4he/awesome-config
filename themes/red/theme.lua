@@ -17,7 +17,7 @@ theme.color = {
 	icon      = "#a0a0a0",
 	text      = "#aaaaaa",
 	urgent    = "#00725B",
-	highlight = "#ffffff",
+	highlight = "#e0e0e0",
 
 	border    = "#404040",
 	shadow1   = "#141414",
@@ -526,6 +526,21 @@ theme.widget.tasklist.appnames["Easytag"             ] = "TAG"
 theme.widget.tasklist.appnames["Mcomix"              ] = "CMX"
 theme.widget.tasklist.appnames["Claws-mail"          ] = "CML"
 
+-- Client menu
+------------------------------------------------------------
+theme.widget.clientmenu = {
+	micon           = theme.icon,
+	color           = theme.color,
+	actionline      = { height = 28 },
+	stateline       = { height = 38 },
+	layout_icon     = theme.widget.layoutbox.icon,
+	menu            = theme.widget.tasklist.winmenu.menu,
+	state_iconsize  = theme.widget.tasklist.winmenu.state_iconsize,
+	action_iconsize = { width = 18, height = 18 },
+	tagmenu         = theme.widget.tasklist.winmenu.tagmenu,
+	icon            = theme.widget.tasklist.winmenu.icon,
+}
+
 
 -- Floating widgets
 -----------------------------------------------------------------------------------------------------------------------
@@ -754,6 +769,9 @@ theme.border_marked = theme.color.main
 
 -- font
 theme.font = theme.fonts.main
+
+-- misc
+theme.enable_spawn_cursor = false
 
 -- End
 -----------------------------------------------------------------------------------------------------------------------

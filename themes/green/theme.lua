@@ -17,7 +17,7 @@ theme.color = {
 	icon      = "#a0a0a0",
 	text      = "#aaaaaa",
 	urgent    = "#a21e17",
-	highlight = "#ffffff",
+	highlight = "#e0e0e0",
 
 	border    = "#404040",
 	shadow1   = "#141414",
@@ -476,9 +476,9 @@ theme.gauge.tag.green.icon = theme.widget.layoutbox.icon
 -- Tasklist
 ------------------------------------------------------------
 theme.widget.tasklist = {
-	width       = 80,
 	custom_icon = true,
 	need_group  = false,
+	task        = theme.gauge.task.green,
 	-- parser      = { icons = {
 	-- 	theme   = theme.homedir .. "/.icons/ACYLS-circle",
 	-- }},
@@ -521,6 +521,20 @@ theme.widget.tasklist.winmenu.icon = {
 -- icon aliases
 theme.widget.tasklist.iconnames = {}
 theme.widget.tasklist.iconnames["jetbrains-pycharm-ce"] = "pycharm"
+
+-- Client menu
+------------------------------------------------------------
+theme.widget.clientmenu = {
+	micon          = theme.icon,
+	color          = theme.color,
+	actionline     = { height = 28 },
+	layout_icon    = theme.widget.layoutbox.icon,
+	menu           = theme.widget.tasklist.winmenu.menu,
+	state_iconsize = theme.widget.tasklist.winmenu.state_iconsize,
+	tagmenu        = theme.widget.tasklist.winmenu.tagmenu,
+	icon           = theme.widget.tasklist.winmenu.icon,
+}
+
 
 -- Floating widgets
 -----------------------------------------------------------------------------------------------------------------------
@@ -754,6 +768,9 @@ theme.border_marked = theme.color.main
 
 -- font
 theme.font = theme.fonts.main
+
+-- misc
+theme.enable_spawn_cursor = false
 
 -- End
 -----------------------------------------------------------------------------------------------------------------------
