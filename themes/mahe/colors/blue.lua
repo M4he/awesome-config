@@ -1,7 +1,7 @@
 local theme = {}
 
 theme.color = {
-    main      = "#33CCB2",  -- main accent
+    main      = "#33A4FF",  -- main accent
     gray      = "#5C696B",  -- used for inactive elements and bar trunks
     bg        = "#191A1F",  -- bg used for custom widgets (e.g. appswitcher, top)
     bg_second = "#14161A",  -- alternating lines for 'bg'

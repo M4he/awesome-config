@@ -9,30 +9,30 @@ local wa = mouse.screen.workarea
 -- Color scheme
 -----------------------------------------------------------------------------------------------------------------------
 theme.color = {
-	main      = "#66CC33",
-	gray      = "#5C696B",  -- used for inactive elements and bar trunks
-	bg        = "#23252B",  -- bg used for custom widgets (e.g. appswitcher, top)
-	bg_second = "#25282E",  -- alternating lines for 'bg'
-	wibox     = "#222830",  -- border, panel and general background color
-	icon      = "#EEEEEE",  -- icons in menus
-	text      = "#EEEEEE",  -- text in menus and titlebars
-	urgent    = "#FF4070",  -- urgent window highlight in taglist, tasklist also volume mute
-	highlight = "#262D36",  -- text when highlighted in menu
-	empty     = "#5C696B",  -- circle tag empty color
+	main      = "#02606D",
+	gray      = "#575757",  -- used for inactive elements and bar trunks
+	bg        = "#161616",  -- bg used for custom widgets (e.g. appswitcher, top)
+	bg_second = "#181818",  -- alternating lines for 'bg'
+	wibox     = "#202020",  -- border, panel and general background color
+	icon      = "#a0a0a0",  -- icons in menus
+	text      = "#aaaaaa",  -- text in menus and titlebars
+	urgent    = "#B25500",  -- urgent window highlight in taglist, tasklist also volume mute
+	highlight = "#e0e0e0",  -- text when highlighted in menu
+	empty     = "#575757",  -- circle tag empty color
 
 	border    = "#404040",  -- tooltip border
-	shadow1   = "#16181A",  -- separator dark side
-	shadow2   = "#2E343D",  -- separator bright side
-	shadow3   = "#808080",  -- buttons outer border
-	shadow4   = "#5C696B",  -- buttons inner border
+	shadow1   = "#141414",  -- separator dark side
+	shadow2   = "#313131",  -- separator bright side
+	shadow3   = "#1c1c1c",  -- buttons outer border
+	shadow4   = "#767676",  -- buttons inner border
 
-	secondary = "#EEEEEE"
+	secondary = "#404040"   -- rofi secondary accent color
 }
 
 -- Color variations
 -- Import your color variations here!
 ---------------------------------------------
--- theme = require('themes.mahe.colors.sunshift-pure')
+-- theme = require('themes.mahe.colors.blue')
 
 -- Common
 -----------------------------------------------------------------------------------------------------------------------
@@ -418,6 +418,7 @@ theme.widget.tasklist.winmenu = {
 	menu           = { width = 220, color = { right_icon = theme.color.icon }, ricon_margin = { 9, 9, 9, 9 } },
 	state_iconsize = { width = 18, height = 18 },
 	layout_icon    = theme.widget.layoutbox.icon,
+	hide_action    = { min = true, move = true, max = true, add = true },
 	color          = theme.color
 }
 
