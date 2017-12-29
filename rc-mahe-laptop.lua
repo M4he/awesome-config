@@ -229,10 +229,13 @@ awful.screen.connect_for_each_screen(
 		else
 			-- ANY NON-PRIMARY SCREEN
 
-			awful.tag({ "Main" }, s, { al[3] })
+			awful.tag({ "Main", "Sub" }, s, { al[3], al[1] })
 
 			-- layoutbox widget
 			layoutbox[s] = redflat.widget.layoutbox({ screen = s })
+
+			-- taglist widget
+			taglist[s] = redflat.widget.taglist({ screen = s, buttons = taglist.buttons, hint = env.tagtip }, taglist.style)
 
 			-- tasklist widget
 			tasklist[s] = redflat.widget.tasklist({ screen = s, buttons = tasklist.buttons }, tasklist.style)
@@ -247,6 +250,8 @@ awful.screen.connect_for_each_screen(
 					layout = wibox.layout.fixed.horizontal,
 
 					env.wrapper(layoutbox[s], "layoutbox", layoutbox.buttons),
+					separator,
+					env.wrapper(taglist[s], "taglist"),
 					separator,
 				},
 				{ -- middle widget
