@@ -26,6 +26,7 @@ local map = redflat.layout.map
 local redtitle = redflat.titlebar
 local qlaunch = redflat.float.qlaunch
 local clientmenu = redflat.float.clientmenu
+local naughty = require("naughty")
 
 -- Key support functions
 -----------------------------------------------------------------------------------------------------------------------
@@ -261,7 +262,7 @@ function hotkeys:init(args)
 				else
 					br = "0." .. ik
 				end
-				awful.spawn("xrandr --output HDMI1 --brightness " .. br .. " --gamma 0.9:0.9:0.9")
+				awful.spawn("xrandr --output HDMI1 --brightness " .. br)
 			end,
 			{ description = "Set external monitor brightness level to " .. ik, group = "Monitor management", keyset = { ik } }
 		})
@@ -834,7 +835,17 @@ function hotkeys:init(args)
 	self.mouse.client = awful.util.table.join(
 		awful.button({}, 1, function (c) client.focus = c; c:raise() end),
 		awful.button({ env.mod }, 1, function (c) client.focus = c; c:raise(); awful.mouse.client.move(c) end),
-		awful.button({ env.mod }, 2, function (c) clientmenu:show(c) end),
+		awful.button({ env.mod }, 2, function (c)
+			clientmenu:show(c)
+			-- the redflat.float.clientmenu's redflat.menu will start a
+			-- awful.keygrabber upon show(). It seems that an
+			-- awful.keygrabber.start() command within an awful.button()
+			-- here will prevent any subsequent mouse hover/click,
+			-- rendering Awesome unusable, so we need to quickly stop it
+			-- here (Awesome bug?)
+			-- This prevents Esc close for the menu sadly.
+			awful.keygrabber.stop(clientmenu.menu._keygrabber)
+		end),
 		awful.button({ env.mod }, 3, function (c)
 			-- only enable right-click resizing for floating clients and layouts
 			if c.floating or (c.screen.selected_tag.layout == redflat.layout.grid) or (c.screen.selected_tag.layout == awful.layout.suit.floating) then
