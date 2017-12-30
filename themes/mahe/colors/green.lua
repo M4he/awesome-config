@@ -18,7 +18,7 @@ theme.color = {
     shadow3   = "#808080",  -- buttons outer border
     shadow4   = "#5C696B",  -- buttons inner border
 
-    secondary = "#EEEEEE"
+    secondary = "#66CC33"
 }
 
 return theme
