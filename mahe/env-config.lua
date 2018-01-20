@@ -53,13 +53,13 @@ function env:init(args)
 	rofi_cmd = rofi_cmd .. " -color-window '" .. beautiful.color.wibox .. "," .. beautiful.color.gray .. "," .. rofi_accent_color .. "'"
 	--
 	-- SYNTAX: -color-normal background, foreground, background_alt, highlight_background, highlight_foreground
-	rofi_cmd = rofi_cmd .. " -color-normal '" .. beautiful.color.wibox .. "," .. beautiful.color.text .. "," .. beautiful.color.wibox .. "," .. beautiful.color.main .. "," .. beautiful.color.wibox .. "'"
+	rofi_cmd = rofi_cmd .. " -color-normal '" .. beautiful.color.wibox .. "," .. beautiful.color.text .. "," .. beautiful.color.wibox .. "," .. beautiful.color.main .. "," .. beautiful.color.highlight .. "'"
 	--
 	-- SYNTAX: color-urgent background, foreground, background_alt, highlight_background, highlight_foreground
-	rofi_cmd = rofi_cmd .. " -color-urgent '" .. beautiful.color.wibox .. "," .. beautiful.color.urgent .. "," .. beautiful.color.wibox .. "," .. beautiful.color.urgent .. "," .. beautiful.color.wibox .. "'"
+	rofi_cmd = rofi_cmd .. " -color-urgent '" .. beautiful.color.wibox .. "," .. beautiful.color.urgent .. "," .. beautiful.color.wibox .. "," .. beautiful.color.urgent .. "," .. beautiful.color.highlight .. "'"
 	--
 	-- SYNTAX: color-active background, foreground, background_alt, highlight_background, highlight_foreground
-	rofi_cmd = rofi_cmd .. " -color-active '" .. beautiful.color.wibox .. "," .. rofi_accent_color .. "," .. beautiful.color.wibox .. "," .. rofi_accent_color .. "," .. beautiful.color.text .. "'"
+	rofi_cmd = rofi_cmd .. " -color-active '" .. beautiful.color.wibox .. "," .. rofi_accent_color .. "," .. beautiful.color.wibox .. "," .. rofi_accent_color .. "," .. beautiful.color.highlight .. "'"
 	--
 	-- generic styling
 	rofi_cmd = rofi_cmd .. " -bw 2 -lines 10 -separator-style solid -padding 5 -scrollbar-width 5 -line-margin 5 -line-padding 2 -sidebar-mode true"
