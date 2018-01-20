@@ -32,7 +32,7 @@ theme.color = {
 -- Color variations
 -- Import your color variations here!
 ---------------------------------------------
--- theme = require('themes.mahe.colors.blue')
+theme = require('themes.mahe.colors.green')
 
 -- Common
 -----------------------------------------------------------------------------------------------------------------------
