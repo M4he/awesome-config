@@ -124,7 +124,8 @@ function rules:init(args)
 				floating = true,
 				below = true,
 				sticky = true,
-				border_width = 0
+				border_width = 0,
+				focusable = false
 			}
 		},
 		{
