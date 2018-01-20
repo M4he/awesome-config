@@ -3,7 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------
 
 -- Grab environment
-local awful =require("awful")
+local awful = require("awful")
 local beautiful = require("beautiful")
 local redtitle = require("redflat.titlebar")
 
@@ -21,19 +21,8 @@ rules.base_properties = {
 }
 
 rules.floating_any = {
-	class = {
-		"Clipflap", "Run.py",
-	},
 	role = { "AlarmWindow", "pop-up", },
 	type = { "dialog" }
-}
-
-rules.titlebar_exeptions = {
-	class = { "Cavalcade", "Clipflap", "Steam" }
-}
-
-rules.maximized = {
-	class = { "Emacs24" }
 }
 
 -- Build rule table
@@ -66,7 +55,6 @@ function rules:init(args)
 		},
 		{
 			rule_any   = { type = { "normal", "dialog" }},
-			except_any = self.titlebar_exeptions,
 			properties = { titlebars_enabled = true }
 		},
 		{
@@ -79,31 +67,19 @@ function rules:init(args)
 			properties = { placement = awful.placement.bottom_right }
 		},
 		{
-			-- set Firefox to always map on tags number 2 of screen 1.
-			rule = { class = "Firefox-esr" },
+			rule_any = { class = { "Firefox-esr", "Pidgin", "Thunderbird" } },
 			properties = { screen = 1, tag = screen.primary.tags[2] }
 		},
 		{
-			rule = { class = "Pidgin" },
-			properties = { screen = 1, tag = screen.primary.tags[2] }
-		},
-		{
-			rule = { class = "Thunderbird" },
-			properties = { screen = 1, tag = screen.primary.tags[2] }
-		},
-		{
-			rule = { class = "Audacious" },
+			rule_any = { class = { "Audacious", "mpv" } },
 			properties = {
-				-- floating = true,
 				size_hints_honor = true,
-				-- minimized = true,
-				-- sticky = true
 			}
 		},
 		{
-			rule = { class = "mpv" },
+			rule = { class = "Wine" },
 			properties = {
-				size_hints_honor = true,
+				floating = true,
 			}
 		},
 		{
@@ -133,6 +109,22 @@ function rules:init(args)
 				maximized = true,
 				border_width = 0,
 				titlebars_enabled = false
+			}
+		},
+		{
+			rule = { role = "descot" },
+			-- enable click-through: this allows to reach desktop menus
+			-- (and the like) by clicking the mascot
+			callback = function(c)
+				local cairo = require("lgi").cairo
+				local img = cairo.ImageSurface(cairo.Format.A1, 0, 0)
+				c.shape_input = img._native img:finish()
+			end,
+			properties = {
+				floating = true,
+				below = true,
+				sticky = true,
+				border_width = 0
 			}
 		},
 		{
