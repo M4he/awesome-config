@@ -310,19 +310,25 @@ end
 
 draw_wallpaper()
 
--- ONTOP WIBOX WORKAROUND AND FLOATING RESIZE HINTS
+-- ONTOP WIBOX WORKAROUND
 -- temporary abandons the panel's ontop property for fullscreen windows
 for s=1, screen.count() do
-    screen[s]:connect_signal("arrange", function()
-        local wibox_ontop = true
-        for _, c in pairs(awful.client.visible(s)) do
-            if c.fullscreen then
-                wibox_ontop = false
-                break
-            end
-        end
-        screen[s].panel.ontop = wibox_ontop
-    end)
+	screen[s]:connect_signal("arrange", function()
+		local wibox_ontop = true
+		-- check for fullscreen layout
+		if awful.layout.get(screen[s]).name == "fullscreen" then
+			wibox_ontop = false
+		else
+		-- check for any fullscreen client
+			for _, c in pairs(awful.client.visible(s)) do
+				if c.fullscreen then
+					wibox_ontop = false
+					break
+				end
+			end
+		end
+		screen[s].panel.ontop = wibox_ontop
+	end)
 end
 
 -- MULTISCREEN FIX
