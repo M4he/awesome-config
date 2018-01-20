@@ -196,7 +196,7 @@ awful.screen.connect_for_each_screen(
 			tasklist[s] = redflat.widget.tasklist({ screen = s, buttons = tasklist.buttons }, tasklist.style)
 
 			-- panel wibox
-			s.panel = awful.wibar({ position = "bottom", screen = s, height = beautiful.panel_height or 36 })
+			s.panel = awful.wibar({ position = "bottom", ontop = true, screen = s, height = beautiful.panel_height or 36 })
 
 			-- add widgets to the wibox
 			s.panel:setup {
@@ -247,7 +247,7 @@ awful.screen.connect_for_each_screen(
 			tasklist[s] = redflat.widget.tasklist({ screen = s, buttons = tasklist.buttons }, tasklist.style)
 
 			-- panel wibox
-			s.panel = awful.wibar({ position = "bottom", screen = s, height = beautiful.panel_height or 36 })
+			s.panel = awful.wibar({ position = "bottom", ontop = true, screen = s, height = beautiful.panel_height or 36 })
 
 			-- add widgets to the wibox
 			s.panel:setup {
@@ -323,6 +323,21 @@ local function draw_wallpaper()
 end
 
 draw_wallpaper()
+
+-- ONTOP WIBOX WORKAROUND
+-- temporary abandons the panel's ontop property for fullscreen windows
+for s=1, screen.count() do
+    screen[s]:connect_signal("arrange", function()
+        local wibox_ontop = true
+        for _, c in pairs(awful.client.visible(s)) do
+            if c.fullscreen then
+                wibox_ontop = false
+                break
+            end
+        end
+        screen[s].panel.ontop = wibox_ontop
+    end)
+end
 
 -- MULTISCREEN FIX
 -- whenever the screens change, redraw the wallpaper(s)
