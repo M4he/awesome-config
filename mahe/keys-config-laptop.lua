@@ -320,19 +320,19 @@ function hotkeys:init(args)
 	keyseq[3][7][3] = {
 		{
 			{}, "p", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/monitor.sh primary") end,
-			{ description = "Only activate PRIMARY screen", group = "Monitor managment", keyset = { "p" } }
+			{ description = "Only activate PRIMARY screen", group = "Monitor management", keyset = { "p" } }
 		},
 		{
 			{}, "s", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/monitor.sh secondary") end,
-			{ description = "Only activate SECONDARY screen", group = "Monitor managment", keyset = { "s" } }
+			{ description = "Only activate SECONDARY screen", group = "Monitor management", keyset = { "s" } }
 		},
 		{
 			{}, "e", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/monitor.sh extend") end,
-			{ description = "Extend the internal screen to the right", group = "Monitor managment", keyset = { "e" } }
+			{ description = "Extend the internal screen to the right", group = "Monitor management", keyset = { "e" } }
 		},
 		{
 			{}, "m", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/monitor.sh mirror") end,
-			{ description = "Mirror both screens", group = "Monitor managment", keyset = { "m" } }
+			{ description = "Mirror both screens", group = "Monitor management", keyset = { "m" } }
 		},
 		{
 			{}, "o", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/monitor.sh ontop") end,
@@ -717,7 +717,7 @@ function hotkeys:init(args)
 		-- TAG NAVIGATION
 		{
 			{ env.mod }, "Escape", awful.tag.history.restore,
-			{ description = "Go previos tag", group = "Tag navigation" }
+			{ description = "Go previous tag", group = "Tag navigation" }
 		},
 		{
 			{ env.mod, "Control" }, "Right", awful.tag.viewnext,
