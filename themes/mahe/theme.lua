@@ -425,7 +425,8 @@ theme.widget.tasklist.winmenu = {
 -- tasktip
 theme.widget.tasklist.tasktip = {
 	margin = { 8, 8, 4, 4 },
-	color  = theme.color
+	color  = theme.color,
+	sl_highlight = true
 }
 
 -- tags submenu
@@ -457,6 +458,8 @@ theme.widget.clientmenu = {
 	state_iconsize = theme.widget.tasklist.winmenu.state_iconsize,
 	tagmenu        = theme.widget.tasklist.winmenu.tagmenu,
 	icon           = theme.widget.tasklist.winmenu.icon,
+	hide_action    = { move = true, add = true, floating = true, sticky = false, ontop = false, below = false, maximized = true },
+
 }
 
 
