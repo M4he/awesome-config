@@ -62,9 +62,9 @@ theme.fonts = {
 	title    = "Play bold 13", -- widget titles font
 	titlebar = "Play bold 11", -- client titlebar font
 	hotkeys  = {
-		main  = "Roboto 14",             -- hotkeys helper main font
-		key   = "Roboto Mono Medium 14", -- hotkeys helper key font (use monospace for align)
-		title = "Play bold 16",        -- hotkeys helper group title font
+		main  = "Roboto 11",             -- hotkeys helper main font
+		key   = "Roboto Mono Medium 11", -- hotkeys helper key font (use monospace for align)
+		title = "Play bold 14",        -- hotkeys helper group title font
 	},
 	player   = {
 		main = "Play bold 13", -- player widget main font
@@ -553,7 +553,7 @@ theme.float.qlaunch = {
 -- Hotkeys helper
 ------------------------------------------------------------
 theme.float.hotkeys = {
-	geometry      = { width = 1800, height = 975 },
+	geometry      = { width = 1400, height = 800 },
 	border_margin = { 20, 20, 8, 10 },
 	border_width  = 0,
 	is_align      = true,
