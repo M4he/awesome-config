@@ -311,9 +311,11 @@ signals:init({ env = env })
 
 -- Autostart user applications
 -----------------------------------------------------------------------------------------------------------------------
-local autostart = require("mahe.autostart-config-laptop") -- load file with autostart application list
+local autostart = require("mahe.autostart-config") -- load file with autostart application list
 
 if timestamp.is_startup() then
+	local auto_file = awful.util.get_configuration_dir() .. "mahe/autostart.laptop"
+	autostart.run_from_file(auto_file)
 	autostart.run()
 end
 

@@ -1,0 +1,7 @@
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+start-pulseaudio-x11
+nm-applet
+seafile-applet
+system-config-printer-applet
+xset s 0 0
+xset dpms 0 0 0
