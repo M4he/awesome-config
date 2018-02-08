@@ -3,7 +3,6 @@
 -----------------------------------------------------------------------------------------------------------------------
 
 local awful = require("awful")
-local gears = require("gears")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
 local naughty = require("naughty")
@@ -37,9 +36,8 @@ function env:init(args)
 	self.home = os.getenv("HOME")
 	self.themedir = awful.util.get_configuration_dir() .. "themes/" .. theme
 
-	self.sloppy_focus = false
-	self.color_border = false
-	self.set_slave = true
+	self.sloppy_focus = false  -- focus follows mouse?
+	self.set_slave = false     -- whether new clients will enter the slave stack instead of master
 
 	-- theme setup
 	beautiful.init(env.themedir .. "/theme.lua")
