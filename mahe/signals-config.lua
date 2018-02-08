@@ -74,13 +74,6 @@ function signals:init(args)
 		client.connect_signal("mouse::enter", do_sloppy_focus)
 	end
 
-	-- hilight border of focused window
-	-- can be disabled since focus indicated by titlebars in current config
-	if env.color_border_focus then
-		client.connect_signal("focus",   function(c) c.border_color = beautiful.border_focus end)
-		client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
-	end
-
 	-- Awesome v4.0 introduce screen handling without restart.
 	-- Since I'm using single monitor setup and I'm too lazy to rework my panel widgets for this new feature,
 	-- simple adding signal to restart wm on new monitor pluging.
