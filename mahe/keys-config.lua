@@ -128,7 +128,11 @@ function hotkeys:init(args)
 
 	-- Desktop right-click
 	self.mouse.root = (awful.util.table.join(
-		awful.button({ }, 3, function () mainmenu:toggle() end)
+		awful.button({ }, 3, function () mainmenu:toggle() end),
+		awful.button({ env.mod }, 3, function() awful.tag.viewprev(mouse.screen) end),
+		awful.button({ env.mod }, 1, function() awful.tag.viewnext(mouse.screen) end),
+		awful.button({ }, 8, function() awful.tag.viewprev(mouse.screen) end),
+		awful.button({ }, 9, function() awful.tag.viewnext(mouse.screen) end)
 	))
 
 	-- Init widgets

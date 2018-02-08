@@ -265,12 +265,6 @@ awful.screen.connect_for_each_screen(
 )
 
 
--- Active screen edges
------------------------------------------------------------------------------------------------------------------------
-local edges = require("mahe.edges-config") -- load file with edges configuration
-edges:init()
-
-
 -- Key bindings
 -----------------------------------------------------------------------------------------------------------------------
 local hotkeys = require("mahe.keys-config") -- load file with hotkeys configuration
