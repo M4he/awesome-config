@@ -649,7 +649,7 @@ theme.titlebar = {
 	size          = 8,
 	position      = "top",
 	font          = theme.fonts.titlebar,
-	icon          = { size = 30, gap = 5 },
+	icon          = { size = 30, gap = 4 },
 	border_margin = { 0, 0, 0, 4 },
 	color         = theme.color,
 }
