@@ -177,7 +177,7 @@ awful.screen.connect_for_each_screen(
 		-- tags
 		if screen.primary.index == s.index then
 			-- PRIMARY SCREEN
-			awful.tag({ "Main", "Com", "Code", "Tile", "Grid" }, s, { al[1], al[6], al[3], al[3], al[2] })
+			awful.tag({ "Main", "Com", "Code", "Tile", "Free" }, s, { al[1], al[6], al[3], al[3], al[1] })
 
 			-- layoutbox widget
 			layoutbox[s] = redflat.widget.layoutbox({ screen = s })
@@ -264,6 +264,10 @@ awful.screen.connect_for_each_screen(
 	end
 )
 
+-- Active screen edges
+-----------------------------------------------------------------------------------------------------------------------
+local edges = require("mahe.edges-config") -- load file with edges configuration
+edges:init()
 
 -- Key bindings
 -----------------------------------------------------------------------------------------------------------------------
