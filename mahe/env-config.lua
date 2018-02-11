@@ -37,7 +37,7 @@ function env:init(args)
 	self.themedir = awful.util.get_configuration_dir() .. "themes/" .. theme
 
 	self.sloppy_focus = false  -- focus follows mouse?
-	self.set_slave = false     -- whether new clients will enter the slave stack instead of master
+	self.set_slave = true      -- whether new clients will enter the slave stack instead of master
 
 	-- theme setup
 	beautiful.init(env.themedir .. "/theme.lua")
