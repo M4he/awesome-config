@@ -5,6 +5,7 @@
 -- Grab environment
 local awful = require("awful")
 local beautiful = require("beautiful")
+local gears = require("gears")
 
 
 -- Initialize tables and vars for module
@@ -30,6 +31,26 @@ local function fixed_maximized_geometry(c, context)
 	end
 end
 
+local function border_width_check(c)
+	if not c.maximized then
+		c.border_width = beautiful.border_width
+	else
+		c.border_width = 0
+	end
+end
+
+-- set rounded corners for non-maximized clients
+local function rounded_corners_check(c)
+	local border_radius = beautiful.border_radius or 0
+	if not c.maximized then
+		c.shape = function(cr,w,h)
+			gears.shape.rounded_rect(cr, w, h, border_radius)
+		end
+	else
+		c.shape = gears.shape.rect
+	end
+end
+
 -- Build  table
 -----------------------------------------------------------------------------------------------------------------------
 function signals:init(args)
@@ -51,6 +72,9 @@ function signals:init(args)
 			then
 				awful.placement.no_offscreen(c)
 			end
+
+			border_width_check(c)
+			rounded_corners_check(c)
 		end
 	)
 
@@ -58,9 +82,8 @@ function signals:init(args)
 	client.connect_signal(
 		"property::maximized",
 		function(c)
-			if not c.maximized then
-				c.border_width = beautiful.border_width
-			end
+			border_width_check(c)
+			rounded_corners_check(c)
 		end
 	)
 

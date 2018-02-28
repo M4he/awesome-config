@@ -25,6 +25,12 @@ rules.floating_any = {
 	type = { "dialog" }
 }
 
+rules.opacity_any = {
+	class = { "Sublime_text", "Tilix" }
+}
+
+rules.opacity_val = beautiful.client_opacity or 1.0
+
 -- Build rule table
 -----------------------------------------------------------------------------------------------------------------------
 function rules:init(args)
@@ -60,6 +66,12 @@ function rules:init(args)
 		{
 			rule_any   = { type = { "normal" }},
 			properties = { placement = awful.placement.no_overlap + awful.placement.no_offscreen }
+		},
+		{
+			rule_any = self.opacity_any,
+			properties = {
+				opacity = self.opacity_val
+			}
 		},
 		-- custom rules
 		{
