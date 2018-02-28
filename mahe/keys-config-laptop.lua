@@ -679,6 +679,19 @@ function hotkeys:init(args)
 			{}, "XF86LaunchA", nil, function() awful.spawn(env.rofi .. " window") end,
 			{ description = "Show Rofi window selection", group = "Main" }
 		},
+		--- SFW MODES
+		{
+			{ "Mod4" }, "s", function() awful.spawn(env.home .. "/.descot/toggle_sfw.sh") end,
+			{} -- hidden key
+		},
+		{
+			{ "Mod4", "Shift" }, "s", function() awful.spawn(env.home .. "/.styles/stylechanger.py SFW") end,
+			{} -- hidden key
+		},
+		{
+			{ "Mod4", "Shift", "Control" }, "s", function() awful.spawn(env.home .. "/.styles/stylechanger.py") end,
+			{} -- hidden key
+		},
 		-- WINDOW NAVIGATION
 		{
 			{ env.mod }, "d", focus_switch_byd("right"),
