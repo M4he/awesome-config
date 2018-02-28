@@ -63,7 +63,7 @@ function titlebar:init(args)
 	local style = {}
 
 	style.light = args.light or redtitle.get_style()
-	style.full = args.full or { size = 24, icon = { size = 22, gap = 0, angle = 0.5 } }
+	style.full = args.full or { size = 22, icon = { size = 4, gap = 4, angle = 0.0 } }
 
 	clientmenu:init()
 
@@ -76,29 +76,23 @@ function titlebar:init(args)
 
 			-- build light titlebar model
 			local light = wibox.widget({
-				nil,
-				{
-					right = style.light.icon.gap,
 					redtitle.icon.focus(c),
 					layout = wibox.container.margin,
-				},
-				{
-					redtitle.icon.property(c, "sticky"),
-					spacing = style.light.icon.gap,
-					layout = wibox.layout.fixed.horizontal()
-				},
-				buttons = buttons,
-				layout  = wibox.layout.align.horizontal,
+					buttons = buttons,
 			})
 
 			-- build full titlebar model
 			local full = wibox.widget({
-				redtitle.icon.focus(c, style.full),
+				{
+					redtitle.icon.focus(c, style.full),
+					right = style.full.icon.gap,
+					layout  = wibox.container.margin,
+				},
 				redtitle.icon.label(c, style.full),
 				{
-					redtitle.icon.property(c, "sticky", style.full),
-					spacing = style.full.icon.gap,
-					layout = wibox.layout.fixed.horizontal()
+					redtitle.icon.focus(c, style.full),
+					left = style.full.icon.gap,
+					layout  = wibox.container.margin,
 				},
 				buttons = buttons,
 				layout  = wibox.layout.align.horizontal,
