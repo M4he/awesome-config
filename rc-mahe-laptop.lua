@@ -175,6 +175,9 @@ sysmon.buttons.ram = awful.util.table.join(
 -- aliases for setup
 local al = awful.layout.layouts
 
+-- panel opacity
+local wibar_opacity = beautiful.panel_opacity or 1.0
+
 -- setup
 awful.screen.connect_for_each_screen(
 	function(s)
@@ -196,7 +199,7 @@ awful.screen.connect_for_each_screen(
 			tasklist[s] = redflat.widget.tasklist({ screen = s, buttons = tasklist.buttons }, tasklist.style)
 
 			-- panel wibox
-			s.panel = awful.wibar({ position = "bottom", ontop = true, screen = s, height = beautiful.panel_height or 36 })
+			s.panel = awful.wibar({ opacity = wibar_opacity, position = "bottom", ontop = true, screen = s, height = beautiful.panel_height or 36 })
 
 			-- add widgets to the wibox
 			s.panel:setup {
@@ -247,7 +250,7 @@ awful.screen.connect_for_each_screen(
 			tasklist[s] = redflat.widget.tasklist({ screen = s, buttons = tasklist.buttons }, tasklist.style)
 
 			-- panel wibox
-			s.panel = awful.wibar({ position = "bottom", ontop = true, screen = s, height = beautiful.panel_height or 36 })
+			s.panel = awful.wibar({ opacity = wibar_opacity, position = "bottom", ontop = true, screen = s, height = beautiful.panel_height or 36 })
 
 			-- add widgets to the wibox
 			s.panel:setup {
