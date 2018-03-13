@@ -655,7 +655,11 @@ theme.titlebar = {
 	font          = theme.fonts.titlebar,
 	icon          = { size = 30, gap = 4 },
 	border_margin = { 0, 0, 0, 4 },
-	color         = theme.color,
+	color         = {
+		gray = theme.color.title_off or theme.color.gray,
+		main = theme.color.title_on  or theme.color.main,
+		wibox = theme.color.title    or theme.color.wibox
+	}
 }
 
 -- Naughty config
@@ -693,9 +697,9 @@ theme.fg_focus      = theme.color.highlight
 theme.fg_urgent     = theme.color.highlight
 theme.fg_minimize   = theme.color.highlight
 
-theme.border_normal = theme.color.wibox
-theme.border_focus  = theme.color.wibox
-theme.border_marked = theme.color.main
+theme.border_normal = theme.color.border_normal or theme.color.wibox
+theme.border_focus  = theme.color.border_focus  or theme.color.wibox
+theme.border_marked = theme.color.border_marked or theme.color.main
 
 -- font
 theme.font = theme.fonts.main
