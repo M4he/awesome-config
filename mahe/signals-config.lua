@@ -32,7 +32,7 @@ local function fixed_maximized_geometry(c, context)
 end
 
 local function border_width_check(c)
-	if not c.maximized then
+	if not c.maximized and not c.rule_borderless then
 		c.border_width = beautiful.border_width
 	else
 		c.border_width = 0

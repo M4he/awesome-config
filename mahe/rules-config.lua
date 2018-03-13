@@ -137,7 +137,8 @@ function rules:init(args)
 				below = true,
 				sticky = true,
 				border_width = 0,
-				focusable = false
+				focusable = false,
+				rule_borderless = true
 			}
 		},
 		{
