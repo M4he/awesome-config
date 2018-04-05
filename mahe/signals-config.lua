@@ -96,13 +96,6 @@ function signals:init(args)
 	if env.sloppy_focus then
 		client.connect_signal("mouse::enter", do_sloppy_focus)
 	end
-
-	-- Awesome v4.0 introduce screen handling without restart.
-	-- Since I'm using single monitor setup and I'm too lazy to rework my panel widgets for this new feature,
-	-- simple adding signal to restart wm on new monitor pluging.
-	-- For reference, screen-dependent widgets are
-	-- redflat.widget.layoutbox, redflat.widget.taglist, redflat.widget.tasklist
-	screen.connect_signal("list", awesome.restart)
 end
 
 -- End

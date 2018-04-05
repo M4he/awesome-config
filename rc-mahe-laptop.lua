@@ -369,6 +369,9 @@ screen.connect_signal("primary_changed",
 )
 
 -- MULTISCREEN FIX
+-- restart Awesome on screen changes (mandatory for redflat widgets)
+screen.connect_signal("removed", awesome.restart)
+screen.connect_signal("added", awesome.restart)
 -- if screens change try to reassign clients to an equivalent tag
 -- on the new screen by matching its name, taken from:
 -- https://github.com/awesomeWM/awesome/issues/1382
