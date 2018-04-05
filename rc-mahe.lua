@@ -352,6 +352,34 @@ screen.connect_signal("primary_changed",
 	end
 )
 
+-- MULTISCREEN FIX
+-- if screens change try to reassign clients to an equivalent tag
+-- on the new screen by matching its name, taken from:
+-- https://github.com/awesomeWM/awesome/issues/1382
+tag.connect_signal("request::screen",
+  function(t)
+    local fallback_tag = nil
+
+    -- find tag with same name on any other screen
+    for other_screen in screen do
+      if other_screen ~= t.screen then
+        fallback_tag = awful.tag.find_by_name(other_screen, t.name)
+        if fallback_tag ~= nil then
+          break
+        end
+      end
+    end
+
+    -- no tag with same name exists, chose random one
+    if fallback_tag == nil then
+      fallback_tag = awful.tag.find_fallback()
+    end
+
+    -- delete the tag and move it to other screen
+    t:delete(fallback_tag, true)
+  end
+)
+
 -- we disable aero snap for now
 -- TODO, see https://awesomewm.org/doc/api/libraries/mouse.html#Theme_variables
 awful.mouse.snap.edge_enabled = false
