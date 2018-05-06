@@ -29,6 +29,16 @@ rules.opacity_any = {
 	class = { "Sublime_text", "Tilix" }
 }
 
+rules.messaging_apps = {
+	class = {
+		"Firefox-esr",
+		"Pidgin",
+		"Thunderbird",
+		"Rocket.Chat+",
+		"Hexchat"
+	}
+}
+
 rules.opacity_val = beautiful.client_opacity or 1.0
 
 -- Build rule table
@@ -79,7 +89,7 @@ function rules:init(args)
 			properties = { placement = awful.placement.bottom_right }
 		},
 		{
-			rule_any = { class = { "Firefox-esr", "Pidgin", "Thunderbird" } },
+			rule_any = self.messaging_apps,
 			properties = { screen = 1, tag = screen.primary.tags[2] }
 		},
 		{
