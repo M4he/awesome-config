@@ -32,7 +32,7 @@ theme.color = {
 -- Color variations
 -- Import your color variations here!
 ---------------------------------------------
-theme = require('themes.mahe.colors.ocha')
+theme = require('themes.mahe.colors.stylish-jade')
 
 -- Common
 -----------------------------------------------------------------------------------------------------------------------
@@ -43,12 +43,12 @@ theme.homedir = os.getenv("HOME")
 ------------------------------------------------------------
 
 theme.panel_height        = 36  -- panel height
-theme.border_width        = 4   -- window border width
-theme.border_radius       = 4   -- window corner radius
+theme.border_width        = 0   -- window border width
+theme.border_radius       = 2   -- window corner radius
 theme.useless_gap         = 5   -- useless gap
 
-theme.client_opacity      = 0.9 -- special client opacity (0.0 - 1.0)
-theme.panel_opacity       = 1.0 -- main panel opacity (0.0 - 1.0)
+theme.client_opacity      = 1.00 -- special client opacity (0.0 - 1.0)
+theme.panel_opacity       = 1.00 -- main panel opacity (0.0 - 1.0)
 
 theme.cellnum = { x = 96, y = 58 } -- grid layout property
 
@@ -650,11 +650,11 @@ theme.float.decoration.field = {
 -- Titlebar
 -----------------------------------------------------------------------------------------------------------------------
 theme.titlebar = {
-	size          = 8,
+	size          = 6,
 	position      = "top",
 	font          = theme.fonts.titlebar,
 	icon          = { size = 30, gap = 4 },
-	border_margin = { 0, 0, 0, 4 },
+	border_margin = { 0, 0, 0, 0 },
 	color         = {
 		gray = theme.color.title_off or theme.color.gray,
 		main = theme.color.title_on  or theme.color.main,
