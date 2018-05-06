@@ -134,6 +134,16 @@ function rules:init(args)
 			}
 		},
 		{
+			rule = { name = "Gnome-Pie" },
+			properties = {
+				floating = true,
+				ontop = true,
+				border_width = 0,
+				titlebars_enabled = false,
+				placement = false
+			}
+		},
+		{
 			rule = { role = "descot" },
 			-- enable click-through: this allows to reach desktop menus
 			-- (and the like) by clicking the mascot
@@ -149,6 +159,31 @@ function rules:init(args)
 				border_width = 0,
 				focusable = false,
 				rule_borderless = true
+			}
+		},
+		{
+			-- this rule requires a patched version of xwinwrap that adds
+			-- the corresponding window class hints
+			rule = { class = "XWinWrap" },
+			-- enable click-through: this allows to reach desktop menus
+			callback = function(c)
+				local cairo = require("lgi").cairo
+				local img = cairo.ImageSurface(cairo.Format.A1, 0, 0)
+				c.shape_input = img._native img:finish()
+			end,
+			properties = {
+				floating = true,
+				below = true,
+				sticky = true,
+				border_width = 0,
+				focusable = false,
+				titlebars_enabled = false
+			}
+		},
+		{
+			rule = { role = "ImgTile" },
+			properties = {
+				titlebars_enabled = false
 			}
 		},
 		{
