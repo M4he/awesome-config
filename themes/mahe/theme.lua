@@ -2,6 +2,7 @@
 --                                                 Mahe's theme                                                      --
 -----------------------------------------------------------------------------------------------------------------------
 local awful = require("awful")
+local gears = require("gears")
 
 local theme = {}
 local wa = mouse.screen.workarea
@@ -661,6 +662,16 @@ theme.titlebar = {
 		wibox = theme.color.title    or theme.color.wibox
 	}
 }
+
+-- Aero Snap
+--------------------------------------------------------------------------------
+local snap_shape = function(cr, width, height)
+    gears.shape.rounded_rect(cr, width, height, theme.border_radius)
+end
+
+theme.snap_border_width = theme.titlebar.size
+theme.snap_bg = theme.color.main
+theme.snap_shape = snap_shape
 
 -- Naughty config
 -----------------------------------------------------------------------------------------------------------------------

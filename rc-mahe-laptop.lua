@@ -400,7 +400,6 @@ tag.connect_signal("request::screen",
 )
 
 -- we disable aero snap for now
--- TODO, see https://awesomewm.org/doc/api/libraries/mouse.html#Theme_variables
 awful.mouse.snap.edge_enabled = false
 
 -- disable the annoying 'busy' mouse cursor when awful.spawn* is used
