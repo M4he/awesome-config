@@ -297,23 +297,23 @@ function hotkeys:init(args)
 	-- monitor handling
 	keyseq[3][7][3] = {
 		{
-			{}, "p", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/monitor.sh primary") end,
+			{}, "p", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/xrandr.sh primary") end,
 			{ description = "Only activate PRIMARY screen", group = "Monitor management", keyset = { "p" } }
 		},
 		{
-			{}, "s", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/monitor.sh secondary") end,
+			{}, "s", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/xrandr.sh secondary") end,
 			{ description = "Only activate SECONDARY screen", group = "Monitor management", keyset = { "s" } }
 		},
 		{
-			{}, "e", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/monitor.sh extend") end,
+			{}, "e", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/xrandr.sh extend") end,
 			{ description = "Extend the internal screen to the right", group = "Monitor management", keyset = { "e" } }
 		},
 		{
-			{}, "m", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/monitor.sh mirror") end,
+			{}, "m", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/xrandr.sh mirror") end,
 			{ description = "Mirror both screens", group = "Monitor management", keyset = { "m" } }
 		},
 		{
-			{}, "o", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/monitor.sh ontop") end,
+			{}, "o", function() awful.spawn.with_shell("bash " .. awful.util.get_configuration_dir() .. "scripts/xrandr.sh ontop") end,
 			{ description = "Set the external screen ontop", group = "Monitor management", keyset = { "o" } }
 		},
 		
