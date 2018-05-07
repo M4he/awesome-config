@@ -99,8 +99,8 @@ function titlebar:init(args)
 			})
 
 			-- Set both models to titlebar
-			redtitle.add_layout(c, nil, full, style.full.size)
 			redtitle.add_layout(c, nil, light)
+			redtitle.add_layout(c, nil, full, style.full.size)
 
 			-- hide titlebar when window maximized
 			if c.maximized_vertical or c.maximized then on_maximize(c) end
