@@ -169,6 +169,24 @@ sysmon.buttons.ram = awful.util.table.join(
 )
 
 
+
+-- Wallpaper setup
+-----------------------------------------------------------------------------------------------------------------------
+
+-- redraw the wallpaper(s) on the root window according to the current layout
+local function draw_wallpaper()
+	awful.spawn.with_shell("nitrogen --restore")
+end
+
+-- draw wallpaper initially after startup
+draw_wallpaper()
+
+-- redraw wallpaper if screen layout/size changes
+screen.connect_signal("property::geometry", function()
+	draw_wallpaper()
+end)
+
+
 -- Screen setup
 -----------------------------------------------------------------------------------------------------------------------
 
@@ -281,6 +299,27 @@ awful.screen.connect_for_each_screen(
 	end
 )
 
+-- ONTOP WIBOX WORKAROUND
+-- temporary abandons the panel's ontop property for fullscreen windows
+for s=1, screen.count() do
+	screen[s]:connect_signal("arrange", function()
+		local wibox_ontop = true
+		-- check for fullscreen layout
+		if awful.layout.get(screen[s]).name == "fullscreen" then
+			wibox_ontop = false
+		else
+		-- check for any fullscreen client
+			for _, c in pairs(awful.client.visible(s)) do
+				if c.fullscreen then
+					wibox_ontop = false
+					break
+				end
+			end
+		end
+		screen[s].panel.ontop = wibox_ontop
+	end)
+end
+
 
 -- Active screen edges
 -----------------------------------------------------------------------------------------------------------------------
@@ -321,55 +360,6 @@ if timestamp.is_startup() then
 	autostart.run_from_file(auto_file)
 	autostart.run()
 end
-
--- redraw the wallpaper(s) on the root window according to the current layout
-local function draw_wallpaper()
-	awful.spawn.with_shell("nitrogen --restore")
-end
-
-draw_wallpaper()
-
--- ONTOP WIBOX WORKAROUND
--- temporary abandons the panel's ontop property for fullscreen windows
-for s=1, screen.count() do
-	screen[s]:connect_signal("arrange", function()
-		local wibox_ontop = true
-		-- check for fullscreen layout
-		if awful.layout.get(screen[s]).name == "fullscreen" then
-			wibox_ontop = false
-		else
-		-- check for any fullscreen client
-			for _, c in pairs(awful.client.visible(s)) do
-				if c.fullscreen then
-					wibox_ontop = false
-					break
-				end
-			end
-		end
-		screen[s].panel.ontop = wibox_ontop
-	end)
-end
-
--- MULTISCREEN FIX
--- update the screen order if primary screen changes
-screen.connect_signal("primary_changed",
-	function(s)
-		if s == screen.primary and s.index ~= 1 then
-			s:swap(screen[1])
-		end
-	end
-)
-
--- MULTISCREEN FIX
--- restart Awesome on screen changes (mandatory for redflat widgets)
-screen.connect_signal("removed", function()
-	draw_wallpaper()
-	awesome.restart()
-end)
-screen.connect_signal("added", function()
-	draw_wallpaper()
-	awesome.restart()
-end)
 
 -- we disable aero snap for now
 awful.mouse.snap.edge_enabled = false

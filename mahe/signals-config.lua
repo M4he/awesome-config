@@ -51,6 +51,11 @@ local function rounded_corners_check(c)
 	end
 end
 
+-- black out the wallpaper on all screens
+local function blank_wallpaper()
+	awful.spawn.with_shell("hsetroot -solid '#000000'")
+end
+
 -- Build  table
 -----------------------------------------------------------------------------------------------------------------------
 function signals:init(args)
@@ -96,6 +101,31 @@ function signals:init(args)
 	if env.sloppy_focus then
 		client.connect_signal("mouse::enter", do_sloppy_focus)
 	end
+
+
+	-- Multiscreen handling
+	-------------------------------------------------------------------------------------------------------------------
+
+	-- restart awesome if the primary screen changes
+	-- we want to reorder our screens here otherwise
+	-- the wibars and tags might stay on the wrong
+	-- monitor
+	screen.connect_signal("primary_changed",
+		function(s)
+			blank_wallpaper()
+			awesome.restart()
+		end
+	)
+	-- restart Awesome on any other screen changes
+	-- (mandatory for redflat widgets)
+	screen.connect_signal("removed", function()
+		blank_wallpaper()
+		awesome.restart()
+	end)
+	screen.connect_signal("added", function()
+		blank_wallpaper()
+		awesome.restart()
+	end)
 end
 
 -- End
