@@ -4,7 +4,8 @@
 
 appnames = {}
 
-appnames["Firefox-esr"] = "INET"
+appnames["Firefox-esr"] = "WWW"
+appnames["Hexchat"] = "IRC"
 appnames["Audacious"] = "AUDCS"
 appnames["Sublime_text"] = "SUBL"
 appnames["Gnome-system-monitor"] = "SYSMN"
@@ -19,7 +20,7 @@ appnames["VirtualBox"] = "VBOX"
 appnames["Keepassx"] = "KPASS"
 appnames["keepassxc"] = "KPASS"
 appnames["Simplescreenrecorder"] = "REC"
-appnames["Pidgin"] = "CHAT"
+appnames["Pidgin"] = "PIDGN"
 appnames["Thunderbird"] = "MAIL"
 appnames["Xfce4-screenshooter"] = "SCROT"
 appnames["Nautilus"] = "FILES"
@@ -33,7 +34,7 @@ appnames["libreoffice-calc"] = "CALC"
 appnames["File-roller"] = "ARCHV"
 appnames["Pavucontrol"] = "PAVOL"
 appnames["Oblogout"] = "EXIT"
-appnames["Rocket.Chat+"] = "ROCKT"
+appnames["Rocket.Chat+"] = "CHAT"
 
 return appnames
 
