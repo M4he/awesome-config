@@ -80,6 +80,7 @@ function signals:init(args)
 
 			border_width_check(c)
 			rounded_corners_check(c)
+			fixed_maximized_geometry(c, c.fullscreen and "fullscreen" or "")
 		end
 	)
 
