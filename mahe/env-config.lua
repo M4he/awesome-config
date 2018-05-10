@@ -78,6 +78,12 @@ function env:init(args)
 		naughty.config.presets.critical = redflat.util.table.merge(beautiful.naughty.base, beautiful.naughty.critical)
 		naughty.config.presets.low      = redflat.util.table.merge(beautiful.naughty.base, beautiful.naughty.low)
 	end
+
+	-- always show notifications on the primary screen
+	naughty.config.notify_callback = function(args)
+		args.screen = screen.primary
+		return args
+	end
 end
 
 
