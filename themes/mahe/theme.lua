@@ -411,9 +411,10 @@ theme.widget.layoutbox.name_alias = {
 -- Tasklist
 ------------------------------------------------------------
 theme.widget.tasklist = {
-	width       = 70,
-	char_digit  = 5,
-	task        = theme.gauge.task.blue
+	width         = 70,
+	char_digit    = 5,
+	task          = theme.gauge.task.blue,
+	sort_by_class = true
 }
 
 -- main
@@ -452,9 +453,14 @@ theme.widget.tasklist.winmenu.icon = {
 	maximized            = theme.path .. "/common/window_control/maximized.svg",
 }
 
+
+-- Floating widgets
+-----------------------------------------------------------------------------------------------------------------------
+theme.float = { decoration = {} }
+
 -- Clientmenu
 ------------------------------------------------------------
-theme.widget.clientmenu = {
+theme.float.clientmenu = {
 	micon          = theme.icon,
 	color          = theme.color,
 	actionline     = { height = 28 },
@@ -466,11 +472,6 @@ theme.widget.clientmenu = {
 	hide_action    = { move = true, add = true, floating = true, sticky = false, ontop = false, below = false, maximized = true },
 
 }
-
-
--- Floating widgets
------------------------------------------------------------------------------------------------------------------------
-theme.float = { decoration = {} }
 
 -- Audio player
 ------------------------------------------------------------
