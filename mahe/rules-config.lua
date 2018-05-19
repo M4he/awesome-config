@@ -83,35 +83,43 @@ function rules:init(args)
 				opacity = self.opacity_val
 			}
 		},
-		-- custom rules
-		{
-			rule = { class = "Gsimplecal" },
-			properties = { placement = awful.placement.bottom_right }
-		},
+
+		-- messaging apps tag pinning
 		{
 			rule_any = self.messaging_apps,
 			properties = { screen = 1, tag = screen.primary.tags[2] }
 		},
+
+		-- size hint honor
 		{
 			rule_any = { class = { "Audacious", "mpv" } },
 			properties = {
 				size_hints_honor = true,
 			}
 		},
+
+		-- size hint honor & floating
 		{
-			rule = { class = "Wine" },
+			rule_any = { class = { "Steam", "Wine" } },
 			properties = {
+				size_hints_honor = true,
 				floating = true,
 			}
 		},
 		{
 			rule = { class = "TeamSpeak 3" },
 			properties = {
+				size_hints_honor = true,
 				floating = true,
 				sticky = true,
 				ontop = true,
-				size_hints_honor = true,
 			}
+		},
+
+		-- special desktop apps
+		{
+			rule = { class = "Gsimplecal" },
+			properties = { placement = awful.placement.bottom_right }
 		},
 		{
 			rule = { class = "Covergloobus.py" },
