@@ -37,6 +37,20 @@ local function focus_to_previous()
 	if client.focus then client.focus:raise() end
 end
 
+local function switch_app_next()
+	awful.client.focus.byidx(-1)
+	if client.focus then
+		client.focus:raise()
+	end
+end
+
+local function switch_app_prev()
+	awful.client.focus.byidx(1)
+	if client.focus then
+		client.focus:raise()
+	end
+end
+
 -- change window focus by direction
 local focus_switch_byd = function(dir)
 	return function()
@@ -671,17 +685,17 @@ function hotkeys:init(args)
 			{ description = "Go to urgent client", group = "Client focus" }
 		},
 		{
-			{ env.mod }, "dead_circumflex", focus_to_previous,
+			{ env.mod }, "dead_circumflex", args.quirks.focus_to_previous or focus_to_previous,
 			{ description = "Go to previous client", group = "Client focus" }
 		},
 		{
 			-- window cycle with autoraise
-			{ env.mod }, "Tab", function() awful.client.focus.byidx(-1); if client.focus then client.focus:raise(); end; end,
+			{ env.mod }, "Tab", args.quirks.switch_app_next or switch_app_next,
 			{ description = "Go to previous client", group = "Client focus" }
 		},
 		{
 			-- reverse window cycle with autoraise
-			{ env.mod, "Shift" }, "Tab", function() awful.client.focus.byidx(1); if client.focus then client.focus:raise(); end; end,
+			{ env.mod, "Shift" }, "Tab", args.quirks.switch_app_prev or switch_app_prev,
 			{ description = "Go to next client", group = "Client focus" }
 		},
 		-- TAG NAVIGATION

@@ -312,11 +312,15 @@ end
 local edges = require("mahe.edges-config") -- load file with edges configuration
 edges:init()
 
+-- Maximized layout optimization
+-----------------------------------------------------------------------------------------------------------------------
+local maxopti = require("mahe.max-layout-opti")
+maxopti:init()
 
 -- Key bindings
 -----------------------------------------------------------------------------------------------------------------------
 local hotkeys = require("mahe.keys-config") -- load file with hotkeys configuration
-hotkeys:init({ env = env, menu = mymenu.mainmenu })
+hotkeys:init({ env = env, menu = mymenu.mainmenu, quirks = maxopti })
 
 
 -- Rules
