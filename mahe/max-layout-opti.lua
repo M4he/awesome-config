@@ -2,26 +2,62 @@
 --                                                Special Max Layout Config                                                   --
 -----------------------------------------------------------------------------------------------------------------------
 
+-- TODO
+--- on client close/disappear, restore/focus previous
+--- on tag enter/leave, save/restore minimized states per screen
+--- proper multiscreen handling
+
 -- Grab environment
 local awful = require("awful")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local gears = require("gears")
 
-
--- Initialize tables and vars for module
------------------------------------------------------------------------------------------------------------------------
-local maxopti = {}
-
+-- determines whether a tag is applicable for the special handling of this module
 local function is_max_tag(t)
     return tostring(t.layout.name) == "max"
 end
 
-local function ensure_max_layout()
-    local t = awful.screen.focused().selected_tag
-    if is_max_tag(t) then
-        local fc = client.focus
-        if fc then
+-- Initialize tables and vars for module
+-----------------------------------------------------------------------------------------------------------------------
+local maxopti = {history = {state = {}}}
+
+-- focus handling reference: https://github.com/awesomeWM/awesome/blob/master/lib/awful/client/focus.lua
+
+-- filter to exclude clients from focus history
+function maxopti.history.filter(c)
+    if c.type == "desktop"
+        or c.type == "dock"
+        or c.type == "splash"
+        or not c.focusable then
+        return nil
+    end
+    return c
+end
+
+-- update focus history for newly focused client
+function maxopti.history.update(c)
+    if not maxopti.history.filter(c) then return end
+    if not maxopti.history.state.active then
+        maxopti.history.state.last = c
+        maxopti.history.state.active = c
+    elseif c ~= maxopti.history.state.active then
+        maxopti.history.state.last = maxopti.history.state.active
+        maxopti.history.state.active = c
+    end
+end
+
+-- get the previously focused client from history
+function maxopti.history.get()
+    return maxopti.history.state.last or nil
+end
+
+-- minimizes all clients except the focused one
+local function trigger_unfocused_minimize()
+    local fc = client.focus
+    if fc then
+        local t = fc.screen.selected_tag
+        if is_max_tag(t) then
             for _, c in ipairs(t.screen.clients) do
                 if c == fc then
                     c.minimized = false
@@ -34,31 +70,57 @@ local function ensure_max_layout()
     end
 end
 
-local function get_next_client()
-    return nil
+-- 'inspired' by awful.client.next()
+-- i = index distance to 'sel', may be negative for reverse traversal
+-- sel = selected client
+-- t = selected tag
+--
+-- TODO
+--- if multiple tags selected, also switch through their clients
+---- (use screen.selected_tags(), iterate and merge client tables?)
+function maxopti.switch(i, sel, t)
+    -- Get currently focused client
+    sel = sel or client.focus
+    if sel then
+        -- Get all visible clients
+        local cls = t:clients()
+        local fcls = {}
+        -- Remove all non-normal clients
+        for _, c in ipairs(cls) do
+            if maxopti.history.filter(c) or c == sel then
+                table.insert(fcls, c)
+            end
+        end
+        cls = fcls
+        -- Loop upon each client
+        for idx, c in ipairs(cls) do
+            if c == sel then
+                -- Cycle
+                return cls[gears.math.cycle(#cls, idx + i)]
+            end
+        end
+    end
 end
 
-local function get_prev_client()
-    return nil
+function maxopti.raise_previous()
+    local c = maxopti.history.get()
+    if c then
+    -- naughty.notify({text="client: " .. tostring(c.name)})
+        c.minimized = false
+        client.focus = c
+        c:raise()
+    end
 end
 
 -- A-B toggle between 2 most recent apps
 function maxopti.focus_to_previous()
-    local t = awful.screen.focused().selected_tag
+    local fc = client.focus
+    if not fc then return end
+    local t = fc.screen.selected_tag
     if is_max_tag(t) then
         -- special handling for max layout
-        naughty.notify({text="QUIRK:focus_to_previous"})
-        local fc = client.focus
-        if fc then
-            local s = fc.screen
-            local c = awful.client.focus.history.get(s, 0)
-            if c then
-                naughty.notify({text="QUIRK:previous " .. tostring(c.name)})
-                c.minimized = false
-                client.focus = c
-                c:raise()
-            end
-        end
+        -- naughty.notify({text="QUIRK:focus_to_previous"})
+        maxopti.raise_previous()
     else
         -- handling for normal layouts
         awful.client.focus.history.previous()
@@ -68,14 +130,17 @@ end
 
 -- "Alt-Tab" behavior
 function maxopti.switch_app_next()
-    local t = awful.screen.focused().selected_tag
+    local fc = client.focus
+    if not fc then return end
+    local t = fc.screen.selected_tag
     if is_max_tag(t) then
         -- special handling for max layout
-        naughty.notify({text="QUIRK:switch_app_next"})
-        local c = awful.client.next(-1)
+        -- naughty.notify({text="QUIRK:switch_app_next"})
+        local c = maxopti.switch(1, fc, t)
         if c then
-            naughty.notify({text="QUIRK:client " .. tostring(c.name)})
+            -- naughty.notify({text="QUIRK:client " .. tostring(c.name)})
             c.minimized = false
+            client.focus = c
             c:raise()
         end
     else
@@ -87,17 +152,20 @@ function maxopti.switch_app_next()
     end
 end
 
--- "Alt-Tab" behavior reversed
+-- "Alt-Tab" behavior (reversed)
 function maxopti.switch_app_prev()
-    local t = awful.screen.focused().selected_tag
+    local fc = client.focus
+    if not fc then return end
+    local t = fc.screen.selected_tag
     if is_max_tag(t) then
         -- special handling for max layout
-        naughty.notify({text="QUIRK:switch_app_prev"})
+        -- naughty.notify({text="QUIRK:switch_app_prev"})
         -- restore the previous client in list
-        local c = awful.client.next(1)
+        local c = maxopti.switch(-1, fc, t)
         if c then
-            naughty.notify({text="QUIRK:client " .. tostring(c.name)})
+            -- naughty.notify({text="QUIRK:client " .. tostring(c.name)})
             c.minimized = false
+            client.focus = c
             c:raise()
         end
     else
@@ -116,14 +184,29 @@ function maxopti:init(args)
     client.connect_signal(
         "focus",
         function(c)
-            ensure_max_layout()
+            maxopti.history.update(c)
+            trigger_unfocused_minimize()
         end
     )
+    client.connect_signal(
+        "unmanage",
+        function(c)
+            -- naughty.notify({text="unmanage"})
+            local t = c.screen.selected_tag
+            if t and is_max_tag(t) then maxopti.raise_previous() end
+        end
+    )
+
+    -- TODO
+    --- trigger raise_previous() when client gets dragged away from screen
+    ---- (also concerns taglist bug!)
+
+
     -- tag.connect_signal(
     --     "property::selected",
     --     function(t)
     --         if t.selected then
-    --             ensure_max_layout()
+    --             trigger_unfocused_minimize()
     --         end
     --     end
     -- )
