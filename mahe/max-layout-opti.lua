@@ -3,9 +3,13 @@
 -----------------------------------------------------------------------------------------------------------------------
 
 -- TODO
---- on client close/disappear, restore/focus previous
 --- on tag enter/leave, save/restore minimized states per screen
 --- proper multiscreen handling
+--- maxopti switch: optional class sort (like tasklist)
+--- genuine history buffer, + as optional switch alternative
+---- if history.get() does not return valid client, go further back in history, remove invalid clients
+------ (scenaria: Thunderbird compose new msg, send -> sending popup, popup closes, compose window closes
+------  BUT main should be restored!)
 
 -- Grab environment
 local awful = require("awful")
@@ -38,18 +42,23 @@ end
 -- update focus history for newly focused client
 function maxopti.history.update(c)
     if not maxopti.history.filter(c) then return end
-    if not maxopti.history.state.active then
-        maxopti.history.state.last = c
-        maxopti.history.state.active = c
-    elseif c ~= maxopti.history.state.active then
-        maxopti.history.state.last = maxopti.history.state.active
-        maxopti.history.state.active = c
+    local t = c.screen.selected_tag
+    if is_max_tag(t) then
+        if not maxopti.history.state[t] then maxopti.history.state[t] = {} end
+        if not maxopti.history.state[t].active then
+            maxopti.history.state[t].last = c
+            maxopti.history.state[t].active = c
+        elseif c ~= maxopti.history.state[t].active then
+            maxopti.history.state[t].last = maxopti.history.state[t].active
+            maxopti.history.state[t].active = c
+        end
     end
 end
 
 -- get the previously focused client from history
-function maxopti.history.get()
-    return maxopti.history.state.last or nil
+function maxopti.history.get(t)
+    if not is_max_tag(t) then return nil end
+    return maxopti.history.state[t].last or nil
 end
 
 -- minimizes all clients except the focused one
@@ -102,12 +111,14 @@ function maxopti.switch(i, sel, t)
     end
 end
 
-function maxopti.raise_previous()
-    local c = maxopti.history.get()
-    if c then
+function maxopti.raise_previous(t, focus)
+    local c = maxopti.history.get(t)
+    if c and c.valid and maxopti.history.filter(c) then
     -- naughty.notify({text="client: " .. tostring(c.name)})
         c.minimized = false
-        client.focus = c
+        if focus then
+            client.focus = c
+        end
         c:raise()
     end
 end
@@ -120,7 +131,7 @@ function maxopti.focus_to_previous()
     if is_max_tag(t) then
         -- special handling for max layout
         -- naughty.notify({text="QUIRK:focus_to_previous"})
-        maxopti.raise_previous()
+        maxopti.raise_previous(t, true)
     else
         -- handling for normal layouts
         awful.client.focus.history.previous()
@@ -188,18 +199,26 @@ function maxopti:init(args)
             trigger_unfocused_minimize()
         end
     )
-    client.connect_signal(
-        "unmanage",
-        function(c)
-            -- naughty.notify({text="unmanage"})
-            local t = c.screen.selected_tag
-            if t and is_max_tag(t) then maxopti.raise_previous() end
+    -- client.connect_signal(
+    --     "unmanage",
+    --     function(c)
+    --         naughty.notify({text="unmanage"})
+    --         local t = c.screen.selected_tag
+    --         -- TODO, check if screen has focus, set focus in raise_previous accordingly
+    --         if t and is_max_tag(t) then maxopti.raise_previous(t) end
+    --     end
+    -- )
+    tag.connect_signal(
+        "untagged",
+        function(t)
+            -- naughty.notify({text="untagged"})
+            if t and is_max_tag(t) and t.selected then maxopti.raise_previous(t) end
         end
     )
 
     -- TODO
     --- trigger raise_previous() when client gets dragged away from screen
-    ---- (also concerns taglist bug!)
+    ---- (also concerns taglist bug! +untagged_signal)
 
 
     -- tag.connect_signal(
